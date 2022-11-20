@@ -1,0 +1,28 @@
+.context-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.context-menu__list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1px solid black;
+  background: white;
+
+  li {
+    padding: 3px;
+    cursor: pointer;
+    box-sizing: content-box;
+    border-bottom: 1px solid black;
+  }
+  & :last-child {
+    border-bottom: none;
+  }
+  li:hover {
+    background: grey;
+  }
+}

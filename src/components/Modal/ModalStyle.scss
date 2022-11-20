@@ -1,0 +1,39 @@
+.modal {
+  position: absolute;
+  background: rgba(100, 148, 237, 0.328);
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .modal__window {
+    min-width: 300px;
+    max-width: 1200px;
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  .modal__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  .modal__children {
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px solid black;
+  }
+
+  .modal__buttons {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+  }
+}

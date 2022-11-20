@@ -18,9 +18,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "sourceMap": true,
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "public/images"
+  ],
+  "baseUrl": "./",
+  "paths": {
+    "@components/*": ["src/components/*"],
+    "@components": ["src/components"]
+  },
 }

@@ -1,0 +1,37 @@
+.file-manager {
+  display: flex;
+  border: 3px solid black;
+  height: 100%;
+  width: 100%;
+  background-color: bisque;
+  flex: 1;
+
+  .file-manager__files {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-right: 3px solid black;
+  }
+
+  .file-manager__item {
+    display: flex;
+    padding: 5px 0 0 5px;
+    align-items: center;
+
+    .file-manager__item__image {
+      height: 12px;
+    }
+  }
+
+  .file-manager__title {
+    padding-left: 2px;
+  }
+
+  .file-manager__item__children {
+    padding-left: 15px;
+  }
+
+  .file-manager__item:hover {
+    cursor: pointer;
+  }
+}
