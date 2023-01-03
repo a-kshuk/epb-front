@@ -1,0 +1,130 @@
+$font-path: '../../public/fonts';
+
+@font-face {
+  font-family: 'Anton';
+  src: url('#{$font-path}/AntonRegular.ttf');
+}
+
+@font-face {
+  font-family: 'Gotham Black';
+  src: url('#{$font-path}/GothamBlackRegular.ttf');
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  src: url('#{$font-path}/GothamBold.ttf');
+}
+
+@font-face {
+  font-family: 'Gotham Book';
+  src: url('#{$font-path}/GothamBook.ttf');
+}
+
+@font-face {
+  font-family: 'Gotham Light';
+  src: url('#{$font-path}/GothamLight.ttf');
+}
+
+@font-face {
+  font-family: 'Gotham XLight';
+  src: url('#{$font-path}/GothamXLightRegular.otf');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('#{$font-path}/PoppinsRegular.ttf');
+}
+
+// H0/Anton/Regular/Active/Left;
+
+.H0 {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 100%;
+}
+
+// H1/Gotham/Black/Active/Center-Left
+.H1 {
+  font-family: 'Gotham Black';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+}
+
+// H2/Gotham/Bold/Active/Center-Left
+.H2 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+}
+
+// H3/Gotham/Bold/Active/Center-Left
+.H3 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+}
+
+// H4/Gotham/Book/Active/Left
+.H4 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  /* identical to box height, or 20px */
+  letter-spacing: -0.05em;
+}
+
+// P3/Gotham/Book/Active/left
+.P3 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  text-transform: capitalize;
+}
+
+// P1/Gotham/Book/Active/Left
+.P1 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+}
+
+// P2/Gotham/Light/Active/Left
+.P2 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  text-transform: capitalize;
+}
+
+// P4/Gotham/Book/Active/Left
+.P4 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  text-transform: capitalize;
+}

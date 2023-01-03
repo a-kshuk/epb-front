@@ -6,5 +6,5 @@
       "source.fixAll": true // работает аналогично eslint --fix
   },
   "editor.formatOnSave": true,
-  "path-intellisense.extensionOnImport": false
+  // "path-intellisense.extensionOnImport": false
 }
