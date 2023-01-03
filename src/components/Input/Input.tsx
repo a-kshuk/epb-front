@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import './InputStyle.scss';
+import React, { memo, useMemo } from 'react';
+import styles from './InputStyle.module.scss';
 
 interface IProps
   extends React.DetailedHTMLProps<
@@ -15,16 +15,16 @@ const Input: React.FC<IProps> = (props) => {
 
   const renderError = useMemo(() => {
     if (!error) return null;
-    return <p className='input__error'>{error}</p>;
+    return <p className={styles.input__error}>{error}</p>;
   }, [error]);
 
   return (
-    <div className='input'>
-      <p className='input__title'>{title}</p>
+    <div className={styles.input}>
+      <p className={styles.input__title}>{title}</p>
       <input {...otherProps} />
       {renderError}
     </div>
   );
 };
 
-export default Input;
+export default memo(Input);

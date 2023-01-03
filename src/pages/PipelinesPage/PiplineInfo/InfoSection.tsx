@@ -57,9 +57,10 @@ const InfoSection: React.FC<React.PropsWithChildren<IProps>> = (props) => {
       <h2>{title}</h2>
 
       <Input
-        title={'Название трубопровода:'}
+        title={'Название трубопровода'}
         onChange={(e) => setName(e.target.value)}
         value={name}
+        required
       />
 
       <Input

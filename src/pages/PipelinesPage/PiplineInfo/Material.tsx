@@ -1,6 +1,17 @@
 import React, { useMemo, useState } from 'react';
 import { Button, Input } from '../../../components';
 
+interface IWorkingMode {
+  temperature: number;
+  pressure: string;
+}
+
+interface IMaterial {
+  title: string;
+  workingModes: IWorkingMode[];
+  IOperatingTime: number;
+}
+
 const Material = () => {
   const [material, setMaterial] = useState<string>('');
   const [materials, setMaterials] = useState<string[]>([]);
