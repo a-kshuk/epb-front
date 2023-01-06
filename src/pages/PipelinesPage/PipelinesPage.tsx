@@ -45,7 +45,7 @@ const PipelinesPage = () => {
   return (
     <FileManager items={itemsMock} folders={foldersMock}>
       <div>
-        <InfoSection title='Основные параметры:' />
+        <InfoSection title='Основные параметры' />
       </div>
     </FileManager>
   );

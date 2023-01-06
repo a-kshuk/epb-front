@@ -36,17 +36,19 @@ $font-path: '../../public/fonts';
 }
 
 // H0/Anton/Regular/Active/Left;
-
-.H0 {
+@mixin H0 {
   font-family: 'Anton';
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
   line-height: 100%;
 }
+.H0 {
+  @include H0;
+}
 
 // H1/Gotham/Black/Active/Center-Left
-.H1 {
+@mixin H1 {
   font-family: 'Gotham Black';
   font-style: normal;
   font-weight: 500;
@@ -54,9 +56,12 @@ $font-path: '../../public/fonts';
   line-height: 100%;
   letter-spacing: -0.05em;
 }
+.H1 {
+  @include H1;
+}
 
 // H2/Gotham/Bold/Active/Center-Left
-.H2 {
+@mixin H2 {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 700;
@@ -64,9 +69,12 @@ $font-path: '../../public/fonts';
   line-height: 100%;
   letter-spacing: -0.05em;
 }
+.H2 {
+  @include H2;
+}
 
 // H3/Gotham/Bold/Active/Center-Left
-.H3 {
+@mixin H3 {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 700;
@@ -74,31 +82,39 @@ $font-path: '../../public/fonts';
   line-height: 100%;
   letter-spacing: -0.05em;
 }
+.H3 {
+  @include H3;
+}
 
 // H4/Gotham/Book/Active/Left
-.H4 {
+@mixin H4 {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 100%;
-  /* identical to box height, or 20px */
   letter-spacing: -0.05em;
+}
+.H4 {
+  @include H4;
 }
 
 // P3/Gotham/Book/Active/left
-.P3 {
+@mixin P3 {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
   letter-spacing: -0.05em;
-  text-transform: capitalize;
+  // text-transform: capitalize;
+}
+.P3 {
+  @include P3;
 }
 
 // P1/Gotham/Book/Active/Left
-.P1 {
+@mixin P1 {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 400;
@@ -106,25 +122,34 @@ $font-path: '../../public/fonts';
   line-height: 100%;
   letter-spacing: -0.05em;
 }
+.P1 {
+  @include P1;
+}
 
 // P2/Gotham/Light/Active/Left
-.P2 {
+@mixin P2 {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
   line-height: 100%;
   letter-spacing: -0.05em;
-  text-transform: capitalize;
+  // text-transform: capitalize;
+}
+.P2 {
+  @include P2;
 }
 
 // P4/Gotham/Book/Active/Left
-.P4 {
+@mixin P4 {
   font-family: 'Gotham';
   font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 100%;
   letter-spacing: -0.05em;
-  text-transform: capitalize;
+  // text-transform: capitalize;
+}
+.P4 {
+  @include P4;
 }

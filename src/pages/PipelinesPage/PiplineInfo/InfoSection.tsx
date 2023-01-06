@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input } from '../../../components';
+import { Button, Input, InputBig } from '@/components';
 import CreateField from './CreateField';
 import Material from './Material';
 
@@ -56,11 +56,14 @@ const InfoSection: React.FC<React.PropsWithChildren<IProps>> = (props) => {
     <section className='info'>
       <h2>{title}</h2>
 
-      <Input
-        title={'Название трубопровода'}
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-        required
+      <InputBig
+        label={'Название трубопровода'}
+        input={{
+          onChange: (e) => setName(e.target.value),
+          value: name,
+          required: true,
+        }}
+        status='error'
       />
 
       <Input

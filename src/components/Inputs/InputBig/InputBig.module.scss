@@ -1,0 +1,124 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/fonts.scss';
+
+@mixin autoLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@mixin insideAutoLayout {
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+@mixin placeholder {
+  box-sizing: border-box;
+}
+
+.container {
+  @include autoLayout;
+  gap: 5px;
+}
+
+.container_input {
+  @include autoLayout;
+  padding: 10px 0px;
+  gap: 6px;
+  // width: 250px;
+  background-color: $bgColor;
+  border: 3px solid map.get($gray, 2);
+  border-radius: 8px;
+
+  @include insideAutoLayout;
+  align-self: stretch;
+}
+
+.container_input__error {
+  background-color: map.get($red, 0.5);
+  border-color: map.get($red, 6);
+}
+
+.container_input__success {
+  background-color: map.get($green, 0.5);
+  border-color: map.get($green, 7);
+}
+
+.container_input__disable {
+  background-color: map.get($gray, -1);
+  border-color: map.get($gray, 0);
+}
+
+.container_fields {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 14px;
+  gap: 10px;
+  width: 100%;
+  @include insideAutoLayout;
+}
+
+.label {
+  @include P4;
+  color: map.get($gray, 0);
+}
+
+.input {
+  @include P1;
+  color: map.get($gray, 3);
+  &::placeholder {
+    color: map.get($gray, 0);
+  }
+}
+.input__success {
+  background-color: map.get($green, 0.5);
+}
+.input__error {
+  background-color: map.get($red, 0.5);
+}
+.input__disable {
+  background-color: map.get($gray, -1);
+}
+
+.icon {
+  // background-image: url(/public/images/tick-square.svg);
+  // background-color: red;
+  // fill: red;
+  // -webkit-mask: url(./../../../../public/images/tick-square.svg) no-repeat
+  //   center;
+  // mask: url(./../../../../public/images/tick-square.svg) no-repeat center;
+
+  width: 16;
+  height: 16;
+  svg path::after {
+    fill: green;
+  }
+  img {
+    fill: green;
+  }
+  // background: red;
+  // filter: invert(44%) sepia(33%) saturate(5713%) hue-rotate(329deg)
+  //   brightness(88%) contrast(89%);
+  // svg {
+  //   fill: red;
+  //   width: 16;
+  //   height: 16;
+  // }
+  // color: map.get($gray, 3);
+}
+
+.helper {
+  @include P2;
+  margin: 0 5px;
+  color: map.get($gray, 0);
+}
+.helper__success {
+  color: map.get($green, 7);
+}
+.helper__error {
+  color: map.get($red, 6);
+}
