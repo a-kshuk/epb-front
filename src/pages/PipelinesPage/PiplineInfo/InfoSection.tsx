@@ -63,7 +63,6 @@ const InfoSection: React.FC<React.PropsWithChildren<IProps>> = (props) => {
           value: name,
           required: true,
         }}
-        status='error'
       />
 
       <Input
@@ -95,7 +94,7 @@ const InfoSection: React.FC<React.PropsWithChildren<IProps>> = (props) => {
       />
 
       {items.map((field, index) => (
-        <div key={index + field.title}>
+        <div key={field.title}>
           <Input
             title={field.title + ':'}
             onChange={(e) => onChangeItem(e.target.value, index)}

@@ -1,43 +1,7 @@
-// {
-//   "compilerOptions": {
-//     "target": "es5",
-//     "lib": [
-//       "dom",
-//       "dom.iterable",
-//       "esnext"
-//     ],
-//     "allowJs": true,
-//     "skipLibCheck": true,
-//     "esModuleInterop": true,
-//     "allowSyntheticDefaultImports": true,
-//     "strict": true,
-//     "forceConsistentCasingInFileNames": true,
-//     "noFallthroughCasesInSwitch": true,
-//     "module": "esnext",
-//     "moduleResolution": "node",
-//     "resolveJsonModule": true,
-//     "isolatedModules": true,
-//     "noEmit": true,
-//     "sourceMap": true,
-//     "jsx": "react-jsx"
-//   },
-//   "include": [
-//     "src",
-//     "public/images"
-//   ],
-//   "baseUrl": "./",
-//   "paths": {
-//     "@components/*": ["src/components/*"],
-//     // "@components": ["src/components"],
-//     "@theme/*": ["src/theme/*"],
-//     "@theme": ["src/theme"]
-//   },
-// }
-
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    //"strict": true,
+    "strict": true,
     "allowJs": true,
     "jsx": "react-jsx",
     "module": "esnext",
@@ -67,19 +31,11 @@
     "downlevelIteration": true,
     "skipLibCheck": true
   },
-  // "files": [
-  //   "./node_modules/@tabby.ai/tabby-ui/types/globalDeclarations.d.ts",
-  //   "./node_modules/@tabby.ai/tabby-ui/types/testIdDeclarations.d.ts"
-  // ],
   "include": [
     "./src//*",
     // "./__tests__//*",
-    // "./declarations.d.ts",
-    // "./themeDeclarations.d.ts"
   ],
   "exclude": [
     "node_modules",
-    // "./mocks/**/*",
-    // "jest.config.ts"
   ]
 }

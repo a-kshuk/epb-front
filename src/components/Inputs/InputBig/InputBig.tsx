@@ -1,6 +1,5 @@
 import React, { memo, useMemo } from 'react';
 import classNames from 'classnames';
-// import { ReactComponent as SuccessSvg } from './images/tick-square.svg';
 
 import styles from './InputBig.module.scss';
 
@@ -10,18 +9,19 @@ interface IInputProps {
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >;
-  image?: React.DetailedHTMLProps<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    HTMLImageElement
-  >;
   secondaryLabel?: string;
-  placeholder?: string;
   helperText?: string;
   status?: 'disable' | 'error' | 'success';
 }
 
 const InputBig: React.FC<IInputProps> = (props) => {
-  const { label, secondaryLabel, input: inputProps, image, status } = props;
+  const {
+    label,
+    secondaryLabel,
+    input: inputProps,
+    status,
+    helperText,
+  } = props;
   const isSuccess = useMemo(() => status === 'success', [status]);
   const isError = useMemo(() => status === 'error', [status]);
   const isDisable = useMemo(() => status === 'disable', [status]);
@@ -33,38 +33,22 @@ const InputBig: React.FC<IInputProps> = (props) => {
     return <strong className={styles.label}>{secondaryLabel}</strong>;
   }, []);
 
-  const ImageElement = useMemo(() => {
-    if (isError) {
-      return (
-        <div className={styles.icon}>
-          {/* <SuccessSvg /> */}
-          <img
-            src='/images/warning-2.svg'
-            // className={classNames(styles.icon)}
-          />
-        </div>
-      );
+  const HelperTextElement = useMemo(() => {
+    if (!helperText) {
+      return null;
     }
-    if (status === 'success') {
-      return (
-        <img
-          src='/images/tick-square.svg'
-          className={classNames(styles.icon, styles.green)}
-        />
-      );
-    }
-    if (image) {
-      return (
-        <img
-          {...image}
-          className={classNames(styles.icon, {
-            [image?.className || '']: !image?.className,
-          })}
-        />
-      );
-    }
-    return null;
-  }, [status]);
+    return (
+      <strong
+        className={classNames(
+          styles.helper,
+          { [styles.helper__error]: isError },
+          { [styles.helper__success]: isSuccess }
+        )}
+      >
+        {helperText}
+      </strong>
+    );
+  }, [helperText]);
 
   return (
     <div className={styles.container}>
@@ -92,19 +76,15 @@ const InputBig: React.FC<IInputProps> = (props) => {
             disabled={isDisable}
             {...inputProps}
           />
-          {ImageElement}
-          {/* <image /> */}
+          <div
+            className={classNames(
+              { [styles.icon__error]: isError },
+              { [styles.icon__success]: isSuccess }
+            )}
+          />
         </div>
       </div>
-      <strong
-        className={classNames(
-          styles.helper,
-          { [styles.helper__error]: isError },
-          { [styles.helper__success]: isSuccess }
-        )}
-      >
-        Helper text
-      </strong>
+      {HelperTextElement}
     </div>
   );
 };
