@@ -1,38 +1,43 @@
-$font-path: '/public/fonts';
+$fontPath: '/public/fonts';
 
 @font-face {
   font-family: 'Anton';
-  src: url('#{$font-path}/AntonRegular.ttf');
+  src: url('#{$fontPath}/AntonRegular.ttf');
 }
 
 @font-face {
   font-family: 'Gotham Black';
-  src: url('#{$font-path}/GothamBlackRegular.ttf');
+  src: url('#{$fontPath}/GothamBlackRegular.ttf');
 }
 
 @font-face {
   font-family: 'Gotham Bold';
-  src: url('#{$font-path}/GothamBold.ttf');
+  src: url('#{$fontPath}/GothamBold.ttf');
 }
 
 @font-face {
   font-family: 'Gotham Book';
-  src: url('#{$font-path}/GothamBook.ttf');
+  src: url('#{$fontPath}/GothamBook.ttf');
 }
 
 @font-face {
   font-family: 'Gotham Light';
-  src: url('#{$font-path}/GothamLight.ttf');
+  src: url('#{$fontPath}/GothamLight.ttf');
 }
 
 @font-face {
   font-family: 'Gotham XLight';
-  src: url('#{$font-path}/GothamXLightRegular.otf');
+  src: url('#{$fontPath}/GothamXLightRegular.otf');
 }
 
 @font-face {
   font-family: 'Poppins';
-  src: url('#{$font-path}/PoppinsRegular.ttf');
+  src: url('#{$fontPath}/PoppinsRegular.ttf');
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('#{$fontPath}/PoppinsRegular.ttf');
 }
 
 // H0/Anton/Regular/Active/Left;

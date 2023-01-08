@@ -1,19 +1,7 @@
 @use 'sass:map';
 @import '/src/theme/colors.scss';
 @import '/src/theme/fonts.scss';
-
-@mixin autoLayout {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-@mixin insideAutoLayout {
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
+@import '/src/theme/mixins.scss';
 
 @mixin placeholder {
   box-sizing: border-box;
@@ -21,16 +9,21 @@
 
 .container {
   @include autoLayout;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 5px;
 }
 
 .container_input {
   @include autoLayout;
+  flex-direction: column;
+  align-items: flex-start;
+
   padding: 10px 0px;
   gap: 6px;
   min-width: 250px;
-  background-color: $bgColor;
-  border: 3px solid map.get($gray, 2);
+  background-color: $white;
+  border: 2px solid map.get($gray, 2);
   border-radius: 8px;
 
   @include insideAutoLayout;
@@ -53,9 +46,8 @@
 }
 
 .container_fields {
-  display: flex;
+  @include autoLayout;
   justify-content: space-between;
-  align-items: center;
   padding: 0px 14px;
   gap: 10px;
   width: 100%;
@@ -88,22 +80,12 @@
 
 .icon__error {
   background-color: map.get($red, 6);
-  -webkit-mask: url(/public/images/warning-2.svg) no-repeat center;
-  mask: url(/public/images/warning-2.svg) no-repeat center;
-  -webkit-mask-size: 100%;
-  mask-size: 100%;
-  width: 16px;
-  height: 16px;
+  @include maskIcon('/public/images/warning-2.svg');
 }
 
 .icon__success {
   background-color: map.get($green, 7);
-  -webkit-mask: url(/public/images/tick-square.svg) no-repeat center;
-  mask: url(/public/images/warning-2.svg) no-repeat center;
-  -webkit-mask-size: 100%;
-  mask-size: 100%;
-  width: 16px;
-  height: 16px;
+  @include maskIcon('/public/images/tick-square.svg');
 }
 
 .helper {

@@ -1,0 +1,23 @@
+@mixin autoLayout {
+  display: flex;
+  flex-direction: row;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // align-items: flex-start;
+}
+
+@mixin insideAutoLayout {
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+@mixin maskIcon($url: '/public/images/warning-2.svg') {
+  -webkit-mask: url($url) no-repeat center;
+  mask: url($url) no-repeat center;
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  width: 16px;
+  height: 16px;
+}

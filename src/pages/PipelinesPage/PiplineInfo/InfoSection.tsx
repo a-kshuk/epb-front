@@ -25,7 +25,7 @@ const InfoSection: React.FC<React.PropsWithChildren<IProps>> = (props) => {
 
   const addItem = (newTitle: string): string | void => {
     const checkItem = items.find((field) => field.title === newTitle);
-    if (checkItem) {
+    if (checkItem != null) {
       return 'Такой параметр уже существует';
     }
     setItems((prev) => {
@@ -59,22 +59,32 @@ const InfoSection: React.FC<React.PropsWithChildren<IProps>> = (props) => {
       <InputBig
         label={'Название трубопровода'}
         input={{
-          onChange: (e) => setName(e.target.value),
+          onChange: (e) => {
+            setName(e.target.value);
+          },
           value: name,
           required: true,
         }}
       />
 
-      <Input
-        title={'Регистрационный номер:'}
-        onChange={(e) => setNumber(e.target.value)}
-        value={number}
+      <InputBig
+        label={'Регистрационный номер:'}
+        input={{
+          onChange: (e) => {
+            setNumber(e.target.value);
+          },
+          value: number,
+        }}
       />
 
-      <Input
-        title={'Местонахождение:'}
-        onChange={(e) => setLocation(e.target.value)}
-        value={location}
+      <InputBig
+        label={'Местонахождение:'}
+        input={{
+          onChange: (e) => {
+            setLocation(e.target.value);
+          },
+          value: location,
+        }}
       />
 
       <Material />
@@ -82,14 +92,18 @@ const InfoSection: React.FC<React.PropsWithChildren<IProps>> = (props) => {
       <Input
         title={'Температура:'}
         type='number'
-        onChange={(e) => setTemperature(+e.target.value)}
+        onChange={(e) => {
+          setTemperature(+e.target.value);
+        }}
         value={temperature}
       />
 
       <Input
         title={'Выработка (ч):'}
         type='number'
-        onChange={(e) => setWorkingTime(+e.target.value)}
+        onChange={(e) => {
+          setWorkingTime(+e.target.value);
+        }}
         value={workingTime}
       />
 
@@ -97,10 +111,18 @@ const InfoSection: React.FC<React.PropsWithChildren<IProps>> = (props) => {
         <div key={field.title}>
           <Input
             title={field.title + ':'}
-            onChange={(e) => onChangeItem(e.target.value, index)}
+            onChange={(e) => {
+              onChangeItem(e.target.value, index);
+            }}
             value={field.value}
           />
-          <Button onClick={() => removeItem(index)}>Удалить</Button>
+          <Button
+            onClick={() => {
+              removeItem(index);
+            }}
+          >
+            Удалить
+          </Button>
         </div>
       ))}
       {children}

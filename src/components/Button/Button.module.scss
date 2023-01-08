@@ -1,0 +1,51 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/fonts.scss';
+@import '/src/theme/mixins.scss';
+
+.button {
+  @include autoLayout;
+  flex-direction: row;
+  padding: 12px 24px;
+  gap: 8px;
+  background-color: map.get($purple, 5);
+  border-radius: 4px;
+
+  @include P3;
+  color: $white;
+
+  span {
+    background-color: $white;
+    @include maskIcon();
+  }
+
+  &:hover {
+    background-color: map.get($purple, 4);
+  }
+
+  &:focus {
+    background-color: map.get($purple, 5);
+    border: 2px solid map.get($purple, 0.5);
+  }
+
+  &:active {
+    background-color: map.get($purple, 7);
+  }
+
+  &:disabled {
+    background-color: map.get($purple, 0.5);
+    color: map.get($gray, 1.5);
+
+    span {
+      background-color: map.get($gray, 1.5);
+    }
+  }
+}
+
+.button__icon {
+  padding: 12px;
+}
+
+.button__icon__text {
+  padding: 12px 20px 12px 24px;
+}

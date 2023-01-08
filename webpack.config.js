@@ -23,7 +23,7 @@ module.exports = (env) => {
     output: {
       filename: '[name].[contenthash].js',
       path: path.resolve(__dirname, 'build'),
-      publicPath: '/',
+      publicPath: path.resolve(__dirname, '/'),
       clean: true,
     },
     //TODO: Доработать оптимизацию
@@ -79,7 +79,7 @@ module.exports = (env) => {
         },
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /node_modules/,
           // include: path.resolve(__dirname, 'src'),
           loader: 'babel-loader',
           options: {
