@@ -5,7 +5,6 @@
 
 .button {
   @include autoLayout;
-  flex-direction: row;
   padding: 12px 24px;
   gap: 8px;
   background-color: map.get($purple, 5);

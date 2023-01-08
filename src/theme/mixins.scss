@@ -1,10 +1,10 @@
+@import './paths.scss';
+
 @mixin autoLayout {
   display: flex;
   flex-direction: row;
-  // flex-direction: column;
   justify-content: center;
   align-items: center;
-  // align-items: flex-start;
 }
 
 @mixin insideAutoLayout {
@@ -13,7 +13,7 @@
   flex-grow: 0;
 }
 
-@mixin maskIcon($url: '/public/images/warning-2.svg') {
+@mixin maskIcon($url: '#{$imgPath}/warning-2.svg') {
   -webkit-mask: url($url) no-repeat center;
   mask: url($url) no-repeat center;
   -webkit-mask-size: 100%;

@@ -2,6 +2,7 @@
 @import '/src/theme/colors.scss';
 @import '/src/theme/fonts.scss';
 @import '/src/theme/mixins.scss';
+@import '/src/theme/paths.scss';
 
 @mixin placeholder {
   box-sizing: border-box;
@@ -23,7 +24,7 @@
   gap: 6px;
   min-width: 250px;
   background-color: $white;
-  border: 2px solid map.get($gray, 2);
+  border: 1.5px solid map.get($gray, 2);
   border-radius: 8px;
 
   @include insideAutoLayout;
@@ -80,12 +81,12 @@
 
 .icon__error {
   background-color: map.get($red, 6);
-  @include maskIcon('/public/images/warning-2.svg');
+  @include maskIcon('#{$imgPath}/warning-2.svg');
 }
 
 .icon__success {
   background-color: map.get($green, 7);
-  @include maskIcon('/public/images/tick-square.svg');
+  @include maskIcon('#{$imgPath}/tick-square.svg');
 }
 
 .helper {

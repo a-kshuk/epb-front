@@ -1,0 +1,73 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/fonts.scss';
+@import '/src/theme/mixins.scss';
+
+.tag {
+  @include autoLayout;
+  padding: 4px 8px;
+  gap: 5px;
+  background: map.get($purple, 1);
+  border: 1px solid map.get($purple, 3);
+  border-radius: 12px;
+  @include P1;
+  color: map.get($purple, 6);
+  @include insideAutoLayout;
+
+  .icon__remove {
+    background-color: map.get($purple, 6);
+    @include maskIcon('#{$imgPath}/close-circle.svg');
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.tag__remove {
+  padding: 4px 8px 4px 6px;
+  gap: 2px;
+}
+
+.tag__gray {
+  background: map.get($gray, -1);
+  border-color: map.get($gray, 0);
+  color: map.get($gray, 3);
+  .icon__remove {
+    background-color: map.get($gray, 3);
+  }
+}
+
+.tag__red {
+  background: map.get($red, 0.5);
+  border-color: map.get($red, 6);
+  color: map.get($red, 8.5);
+  .icon__remove {
+    background-color: map.get($red, 8.5);
+  }
+}
+
+.tag__blue {
+  background: map.get($blue, 0.5);
+  border-color: map.get($blue, 4);
+  color: map.get($blue, 8);
+  .icon__remove {
+    background-color: map.get($blue, 8);
+  }
+}
+
+.tag__green {
+  background: map.get($green, 0.5);
+  border-color: map.get($green, 6);
+  color: map.get($green, 9.5);
+  .icon__remove {
+    background-color: map.get($green, 9.5);
+  }
+}
+
+.tag__yellow {
+  background: map.get($yellow, 0.5);
+  border-color: map.get($yellow, 5);
+  color: map.get($yellow, 7);
+  .icon__remove {
+    background-color: map.get($yellow, 7);
+  }
+}
