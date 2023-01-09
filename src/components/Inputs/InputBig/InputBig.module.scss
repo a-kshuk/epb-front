@@ -2,7 +2,6 @@
 @import '/src/theme/colors.scss';
 @import '/src/theme/fonts.scss';
 @import '/src/theme/mixins.scss';
-@import '/src/theme/paths.scss';
 
 @mixin placeholder {
   box-sizing: border-box;
@@ -12,7 +11,6 @@
   @include autoLayout;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
 }
 
 .container_input {
@@ -82,11 +80,15 @@
 .icon__error {
   background-color: map.get($red, 6);
   @include maskIcon('#{$imgPath}/warning-2.svg');
+  width: 16px;
+  height: 16px;
 }
 
 .icon__success {
   background-color: map.get($green, 7);
   @include maskIcon('#{$imgPath}/tick-square.svg');
+  width: 16px;
+  height: 16px;
 }
 
 .helper {

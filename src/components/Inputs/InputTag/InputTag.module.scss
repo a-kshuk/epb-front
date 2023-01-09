@@ -1,0 +1,81 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/fonts.scss';
+@import '/src/theme/mixins.scss';
+
+.container {
+  @include autoLayout;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container__label {
+  @include autoLayout;
+  justify-content: space-between;
+  padding: 0px 5px;
+  gap: 10px;
+  .label {
+    @include P3;
+    color: map.get($gray, 4);
+  }
+  .secondLabel {
+    @include P3;
+    color: map.get($gray, 0);
+  }
+}
+
+.container__tags {
+  box-sizing: border-box;
+  @include autoLayout;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 10px 14px;
+  background: $white;
+  border: 1.5px solid map.get($gray, 0);
+  border-radius: 8px;
+
+  .empty {
+    @include P3;
+    color: map.get($gray, 0);
+  }
+}
+
+.container__helper {
+  @include autoLayout;
+  justify-content: flex-start;
+  color: map.get($gray, 0);
+  gap: 4px;
+}
+
+.container__helper__icon {
+  background-color: map.get($gray, 0);
+  @include maskIcon('#{$imgPath}/tag-right.svg');
+  width: 10px;
+  height: 10px;
+}
+
+.container__error {
+  .container__tags {
+    border-color: map.get($red, 6);
+  }
+  .container__helper {
+    color: map.get($red, 6);
+  }
+  .container__helper__icon {
+    background-color: map.get($red, 6);
+    @include maskIcon('#{$imgPath}/info-circle.svg');
+  }
+}
+
+.container__success {
+  .container__tags {
+    border-color: map.get($green, 7);
+  }
+  .container__helper {
+    color: map.get($green, 7);
+  }
+  .container__helper__icon {
+    background-color: map.get($green, 7);
+    @include maskIcon('#{$imgPath}/tick-circle.svg');
+  }
+}

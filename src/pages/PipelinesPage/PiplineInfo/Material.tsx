@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Button, Input } from '../../../components';
+import { Button, Input, InputTag } from '@/components';
 
 interface IWorkingMode {
   temperature: number;
@@ -44,6 +44,15 @@ const Material = () => {
     setMaterials(newMaterials);
   };
 
+  const tags = useMemo(
+    () =>
+      materials.map((label, index) => ({
+        label,
+        onRemove: () => removeMaterial(index),
+      })),
+    [materials]
+  );
+
   return (
     <div>
       <Input
@@ -53,12 +62,7 @@ const Material = () => {
         error={error}
       />
       <Button onClick={addMaterial}>Добавить материал</Button>
-      {materials.map((title, index) => (
-        <div>
-          {title}
-          <Button onClick={() => removeMaterial(index)}>X</Button>
-        </div>
-      ))}
+      <InputTag label={'Список материалов:'} tags={tags} />
     </div>
   );
 };

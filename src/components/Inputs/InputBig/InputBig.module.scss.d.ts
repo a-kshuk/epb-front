@@ -1,14 +1,5 @@
 declare namespace InputBigModuleScssNamespace {
   export interface IInputBigModuleScss {
-    H0: string;
-    H1: string;
-    H2: string;
-    H3: string;
-    H4: string;
-    P1: string;
-    P2: string;
-    P3: string;
-    P4: string;
     container: string;
     container_fields: string;
     container_input: string;

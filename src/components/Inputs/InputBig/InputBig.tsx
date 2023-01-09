@@ -9,28 +9,22 @@ interface IInputProps {
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   >;
-  secondaryLabel?: string;
+  secondLabel?: string;
   helperText?: string;
   status?: 'disable' | 'error' | 'success';
 }
 
 const InputBig: React.FC<IInputProps> = (props) => {
-  const {
-    label,
-    secondaryLabel,
-    input: inputProps,
-    status,
-    helperText,
-  } = props;
+  const { label, secondLabel, input: inputProps, status, helperText } = props;
   const isSuccess = useMemo(() => status === 'success', [status]);
   const isError = useMemo(() => status === 'error', [status]);
   const isDisable = useMemo(() => status === 'disable', [status]);
 
   const SecondLabelElement = useMemo(() => {
-    if (!secondaryLabel) {
+    if (!secondLabel) {
       return null;
     }
-    return <strong className={styles.label}>{secondaryLabel}</strong>;
+    return <strong className={styles.label}>{secondLabel}</strong>;
   }, []);
 
   const HelperTextElement = useMemo(() => {

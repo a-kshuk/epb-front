@@ -1,9 +1,10 @@
-import classNames from 'classnames';
 import React, { memo, useMemo } from 'react';
+import classNames from 'classnames';
+
 import styles from './Tag.module.scss';
 
 interface IProps {
-  text: string;
+  label: string;
   color?: 'gray' | 'purple' | 'red' | 'blue' | 'green' | 'yellow';
 }
 
@@ -20,7 +21,7 @@ interface IPressProps extends IProps {
 export type ITagProps = IRemoveProps | IPressProps;
 
 const Tag: React.FC<ITagProps> = (props) => {
-  const { onRemove, onPress, text, color = 'purple' } = props;
+  const { onRemove, onPress, label, color = 'purple' } = props;
 
   const removeIconElement = useMemo(() => {
     if (!onRemove) {
@@ -43,7 +44,7 @@ const Tag: React.FC<ITagProps> = (props) => {
       )}
     >
       {removeIconElement}
-      {text}
+      {label}
     </div>
   );
 };

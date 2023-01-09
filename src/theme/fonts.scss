@@ -48,9 +48,6 @@
   font-size: 48px;
   line-height: 100%;
 }
-.H0 {
-  @include H0;
-}
 
 // H1/Gotham/Black/Active/Center-Left
 @mixin H1 {
@@ -60,9 +57,6 @@
   font-size: 36px;
   line-height: 100%;
   letter-spacing: -0.05em;
-}
-.H1 {
-  @include H1;
 }
 
 // H2/Gotham/Bold/Active/Center-Left
@@ -74,9 +68,6 @@
   line-height: 100%;
   letter-spacing: -0.05em;
 }
-.H2 {
-  @include H2;
-}
 
 // H3/Gotham/Bold/Active/Center-Left
 @mixin H3 {
@@ -87,9 +78,6 @@
   line-height: 100%;
   letter-spacing: -0.05em;
 }
-.H3 {
-  @include H3;
-}
 
 // H4/Gotham/Book/Active/Left
 @mixin H4 {
@@ -99,9 +87,6 @@
   font-size: 20px;
   line-height: 100%;
   letter-spacing: -0.05em;
-}
-.H4 {
-  @include H4;
 }
 
 // P3/Gotham/Book/Active/left
@@ -114,9 +99,6 @@
   letter-spacing: -0.05em;
   // text-transform: capitalize;
 }
-.P3 {
-  @include P3;
-}
 
 // P1/Gotham/Book/Active/Left
 @mixin P1 {
@@ -126,9 +108,6 @@
   font-size: 14px;
   line-height: 100%;
   letter-spacing: -0.05em;
-}
-.P1 {
-  @include P1;
 }
 
 // P2/Gotham/Light/Active/Left
@@ -141,9 +120,6 @@
   letter-spacing: -0.05em;
   // text-transform: capitalize;
 }
-.P2 {
-  @include P2;
-}
 
 // P4/Gotham/Book/Active/Left
 @mixin P4 {
@@ -154,7 +130,4 @@
   line-height: 100%;
   letter-spacing: -0.05em;
   // text-transform: capitalize;
-}
-.P4 {
-  @include P4;
 }
