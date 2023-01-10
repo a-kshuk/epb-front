@@ -1,0 +1,36 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/fonts.scss';
+@import '/src/theme/mixins.scss';
+@import '/src/theme/shadows.scss';
+
+.tab_bar {
+  @include autoLayout;
+  justify-content: space-between;
+  background-color: map.get($purple, 4);
+  padding: 20px 100px;
+  width: 100%;
+  @include shadowPurple0px;
+  border-radius: 25px;
+}
+
+.tab_bar__left {
+  @include autoLayout;
+  gap: 100px;
+}
+
+.tab_bar__left__tabs {
+  @include autoLayout;
+  gap: 30px;
+  @include H4;
+  color: $white;
+}
+
+.tab {
+  cursor: pointer;
+  @include noSelect;
+}
+
+.tab__selected {
+  border-bottom: 1px solid $white;
+}

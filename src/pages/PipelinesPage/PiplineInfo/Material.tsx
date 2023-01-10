@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { Button, Input, InputTag } from '@/components';
+import { Input } from '@/components';
+import { Button, InputTag } from '@/kits';
 
 interface IWorkingMode {
   temperature: number;

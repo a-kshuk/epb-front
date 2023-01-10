@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Input, Modal } from '../../../components';
+import { Input } from '../../../components';
+import { Modal } from '@/kits';
 
 interface IProps {
   createField: (text: string) => string | void;

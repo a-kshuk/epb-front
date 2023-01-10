@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React, { memo, useMemo } from 'react';
+import classNames from 'classnames';
 import Tag, { ITagProps } from '../../Tag/Tag';
 
 import styles from './InputTag.module.scss';

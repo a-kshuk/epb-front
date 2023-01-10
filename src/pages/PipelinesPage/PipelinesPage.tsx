@@ -1,4 +1,5 @@
 import React from 'react';
+import { TabBar } from '@/kits';
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
 import { IItem } from '../../components/FileManager/Item/Item';
@@ -44,11 +45,28 @@ const foldersMock: IFolder[] = [
 const PipelinesPage = () => {
   return (
     <FileManager items={itemsMock} folders={foldersMock}>
-      <div>
-        <InfoSection title='Основные параметры' />
+      <div style={{ width: '100%' }}>
+        <TabBar
+          tabs={[
+            { label: 'Основные параметры', isSelected: true },
+            { label: 'Материал' },
+          ]}
+        />
       </div>
+
+      {/* <div>
+        <InfoSection title='Основные параметры' />
+      </div> */}
     </FileManager>
   );
+  // return (
+  //   <TabBar
+  //     tabs={[
+  //       { label: 'Основные параметры', isSelected: true },
+  //       { label: 'Материал' },
+  //     ]}
+  //   />
+  // );
 };
 
 export default PipelinesPage;

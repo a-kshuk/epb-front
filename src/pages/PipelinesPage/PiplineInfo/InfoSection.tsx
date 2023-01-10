@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Input, InputBig } from '@/components';
+import { Input } from '@/components';
+import { Button, InputBig } from '@/kits';
 import CreateField from './CreateField';
 import Material from './Material';
 
