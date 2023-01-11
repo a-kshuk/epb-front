@@ -1,6 +1,7 @@
 $borderRadius: 10px;
 $smallPadding: 5px;
 $mediumPadding: 10px;
+$contentPadding: 60px;
 
 @mixin paddingHorizontal($padding) {
   padding-left: $padding;

@@ -108,3 +108,10 @@ ul {
   -ms-user-select: none;
   user-select: none;
 }
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

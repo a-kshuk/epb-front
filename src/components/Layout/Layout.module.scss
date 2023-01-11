@@ -1,0 +1,69 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/fonts.scss';
+@import '/src/theme/mixins.scss';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.header {
+  @include autoLayout;
+  justify-content: space-between;
+  background-color: map.get($purple, 0.5);
+  padding: 50px 100px 30px;
+  width: 100%;
+  border-bottom: 1px solid map.get($purple, 4);
+}
+
+.header__left {
+  @include autoLayout;
+  gap: 100px;
+}
+
+.header__tabs {
+  @include autoLayout;
+  gap: 30px;
+  @include H4;
+}
+
+.logo {
+  @include autoLayout;
+  align-items: center;
+
+  .logo__text {
+    color: map.get($gray, 4);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+  }
+
+  span {
+    background-color: map.get($gray, 4);
+    @include maskIcon('/public/images/close_folder.png');
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.tab {
+  color: map.get($gray, 4);
+  cursor: pointer;
+  @include noSelect;
+}
+
+.tab__selected {
+  border-bottom: 1px solid $white;
+}
+
+.footer {
+  @include autoLayout;
+  justify-content: space-between;
+  border-top: 1px solid map.get($purple, 4);
+  padding: 20px 100px;
+  background-color: map.get($purple, 0.5);
+}

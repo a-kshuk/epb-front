@@ -1,9 +1,9 @@
 import { memo, useMemo } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
-import './Layout.scss';
+import styles from './Layout.module.scss';
 
-const Layout = memo(() => {
+const Layout = () => {
   const isAuthorization = useAppSelector(
     (state) => state?.authorization?.isAuthorization
   );
@@ -17,41 +17,53 @@ const Layout = memo(() => {
       );
     }
     return (
-      <div>
-        <NavLink className='header__link__button' to='sing-in' title='Войти'>
+      <div className={styles.header__tabs}>
+        <NavLink className={styles.tab} to='sing-in' title='Войти'>
           Войти
         </NavLink>
-        <NavLink to='sing-up' title='Регистрация'>
+        <NavLink className={styles.tab} to='sing-up' title='Регистрация'>
           Регистрация
         </NavLink>
       </div>
     );
   }, [isAuthorization]);
 
+  const labelComponent = useMemo(() => {
+    return (
+      <NavLink className={styles.logo} to='/'>
+        <span />
+        <strong className={styles.logo__text}>ЭПБ</strong>
+      </NavLink>
+    );
+  }, []);
+
   return (
     <>
-      <header className='header'>
-        <div>
-          <NavLink className='header__link__button' to='/'>
-            Главная
-          </NavLink>
-          <NavLink className='header__link__button' to='/news'>
-            Новости
-          </NavLink>
-          <NavLink className='header__link__button' to='/pipelines'>
-            Трубопроводы
-          </NavLink>
+      <header className={styles.header}>
+        <div className={styles.header__left}>
+          {labelComponent}
+          <div className={styles.header__tabs}>
+            <NavLink className={styles.tab} to='/'>
+              Главная
+            </NavLink>
+            <NavLink className={styles.tab} to='/news'>
+              Новости
+            </NavLink>
+            <NavLink className={styles.tab} to='/pipelines'>
+              Трубопроводы
+            </NavLink>
+          </div>
         </div>
         {rightComponent}
       </header>
 
-      <main className='main'>
+      <main className={styles.main}>
         <Outlet />
       </main>
 
-      <footer className='footer'>footer</footer>
+      <footer className={styles.footer}>footer</footer>
     </>
   );
-});
+};
 
-export default Layout;
+export default memo(Layout);
