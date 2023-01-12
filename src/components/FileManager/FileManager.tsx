@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import Folder, { IFolder } from './Folder/Folder';
 import Item, { IItem } from './Item/Item';
-import './FileManager.scss';
+import styles from './FileManager.module.scss';
 
 interface IFileManagerProps {
   items?: IItem[];
@@ -24,12 +24,13 @@ const FileManager: React.FC<IFileManagerProps> = ({
   );
 
   return (
-    <div className='file-manager no-selected'>
-      <div className='file-manager__files'>
+    <div className={styles.file_manager}>
+      <div className={styles.file_manager__files}>
         {renderFolders}
         {renderItems}
       </div>
-      {children}
+      <div className={styles.file_manager__children}>{children}</div>
+      {/* {children} */}
     </div>
   );
 };

@@ -4,6 +4,8 @@ import ContextMenu, {
   IItemMenu,
 } from '../../ContextMenu/ContextMenu';
 
+import styles from '../FileManager.module.scss';
+
 export interface IItem {
   parentId?: number;
   id: number;
@@ -32,7 +34,7 @@ const Item: React.FC<IProps> = ({ title, onPress }) => {
         onLeftClick={onPress}
       />
       <div
-        className='file-manager__item'
+        className={styles.file_manager__item}
         onClick={onClick}
         onContextMenu={onClick}
       >

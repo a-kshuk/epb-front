@@ -1,0 +1,47 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/fonts.scss';
+@import '/src/theme/mixins.scss';
+@import '/src/theme/shadows.scss';
+
+.file_manager {
+  display: flex;
+  border: 3px solid map.get($gray, 4);
+  height: 100%;
+  width: 100%;
+  background-color: map.get($gray, 0.5);
+  flex: 1;
+
+  .file_manager__files {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-right: 3px solid map.get($gray, 4);
+  }
+
+  .file_manager__item {
+    display: flex;
+    padding: 5px 0 0 5px;
+    align-items: center;
+
+    .file_manager__item__image {
+      height: 12px;
+    }
+  }
+
+  .file_manager__title {
+    padding-left: 2px;
+  }
+
+  .file_manager__item__children {
+    padding-left: 15px;
+  }
+
+  .file_manager__item:hover {
+    cursor: pointer;
+  }
+
+  .file_manager__children {
+    width: 100%;
+  }
+}

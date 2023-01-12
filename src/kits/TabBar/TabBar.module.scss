@@ -1,5 +1,6 @@
 @use 'sass:map';
 @import '/src/theme/colors.scss';
+@import '/src/theme/constants.scss';
 @import '/src/theme/fonts.scss';
 @import '/src/theme/mixins.scss';
 @import '/src/theme/shadows.scss';
@@ -7,30 +8,42 @@
 .tab_bar {
   @include autoLayout;
   justify-content: space-between;
+  align-items: flex-end;
   background-color: map.get($purple, 4);
-  padding: 20px 100px;
-  width: 100%;
-  @include shadowPurple0px;
-  border-radius: 25px;
+  padding: 0px 10px;
 }
 
-.tab_bar__left {
+.tabs {
   @include autoLayout;
-  gap: 100px;
-}
-
-.tab_bar__left__tabs {
-  @include autoLayout;
-  gap: 30px;
-  @include H4;
+  align-items: flex-end;
+  gap: 3px;
+  @include P1;
+  height: 100%;
   color: $white;
+  padding: 5px 0px 0px;
 }
 
 .tab {
+  border-radius: 4px 4px 0px 0px;
+  background-color: map.get($purple, 1);
+  color: map.get($gray, 4);
+  padding: 10px;
   cursor: pointer;
   @include noSelect;
 }
 
 .tab__selected {
-  border-bottom: 1px solid $white;
+  background-color: map.get($purple, 0.5);
+  color: map.get($gray, 4);
+  padding: 11px;
+  cursor: default;
+}
+
+.right_element {
+  padding: 5px 0px;
+}
+
+.container_children {
+  padding: $mediumPadding;
+  background-color: map.get($purple, 0.5);
 }

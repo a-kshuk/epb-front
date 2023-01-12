@@ -1,5 +1,5 @@
-import React from 'react';
-import { TabBar } from '@/kits';
+import React, { useState } from 'react';
+import { Button, TabBar } from '@/kits';
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
 import { IItem } from '../../components/FileManager/Item/Item';
@@ -11,6 +11,7 @@ const itemsMock: IItem[] = [
   { id: 1, title: 'Трубопровод 1', onPress: () => alert('click on 1') },
   { id: 2, title: 'Трубопровод 2', onPress: () => alert('click on 2') },
 ];
+
 const foldersMock: IFolder[] = [
   {
     id: 1,
@@ -42,31 +43,23 @@ const foldersMock: IFolder[] = [
   { id: 2, title: 'Папка 2' },
 ];
 
+const TABS = ['Основные параметры', 'Материалы'];
+
 const PipelinesPage = () => {
+  const [tab, setTab] = useState(TABS[0]);
+
   return (
     <FileManager items={itemsMock} folders={foldersMock}>
-      <div style={{ width: '100%' }}>
-        <TabBar
-          tabs={[
-            { label: 'Основные параметры', isSelected: true },
-            { label: 'Материал' },
-          ]}
-        />
-      </div>
-
-      {/* <div>
+      <TabBar
+        tabs={TABS}
+        selectedTab={tab}
+        onChangeTab={setTab}
+        rightElement={<Button>Сохранить</Button>}
+      >
         <InfoSection title='Основные параметры' />
-      </div> */}
+      </TabBar>
     </FileManager>
   );
-  // return (
-  //   <TabBar
-  //     tabs={[
-  //       { label: 'Основные параметры', isSelected: true },
-  //       { label: 'Материал' },
-  //     ]}
-  //   />
-  // );
 };
 
 export default PipelinesPage;

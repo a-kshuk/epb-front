@@ -1,10 +1,11 @@
 declare namespace TabBarModuleScssNamespace {
   export interface ITabBarModuleScss {
+    container_children: string;
+    right_element: string;
     tab: string;
     tab__selected: string;
     tab_bar: string;
-    tab_bar__left: string;
-    tab_bar__left__tabs: string;
+    tabs: string;
   }
 }
 

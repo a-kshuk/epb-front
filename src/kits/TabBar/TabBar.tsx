@@ -1,38 +1,37 @@
-import classNames from 'classnames';
 import React, { memo } from 'react';
+import classNames from 'classnames';
 
 import styles from './TabBar.module.scss';
 
 interface IProps {
-  tabs: {
-    label: string;
-    onPress?: () => void;
-    isSelected?: boolean;
-  }[];
-  logo?: JSX.Element;
+  selectedTab: string;
+  onChangeTab: (tab: string) => void;
+  tabs: string[];
   rightElement?: JSX.Element;
 }
 
-const TabBar: React.FC<IProps> = ({ logo, tabs }) => {
+const TabBar: React.FC<React.PropsWithChildren<IProps>> = (props) => {
+  const { tabs, onChangeTab, selectedTab, rightElement, children } = props;
   return (
-    <div className={styles.tab_bar}>
-      <div className={styles.tab_bar__left}>
-        {logo}
-        <div className={styles.tab_bar__left__tabs}>
-          {tabs.map(({ label, onPress, isSelected }) => (
+    <React.Fragment>
+      <div className={styles.tab_bar}>
+        <div className={styles.tabs}>
+          {tabs.map((tab) => (
             <div
-              key={label}
-              onClick={onPress}
+              key={tab}
+              onClick={() => onChangeTab(tab)}
               className={classNames(styles.tab, {
-                [styles.tab__selected]: !!isSelected,
+                [styles.tab__selected]: selectedTab === tab,
               })}
             >
-              {label}
+              {tab}
             </div>
           ))}
         </div>
+        <div className={styles.right_element}>{rightElement}</div>
       </div>
-    </div>
+      <div className={styles.container_children}>{children}</div>
+    </React.Fragment>
   );
 };
 

@@ -5,6 +5,8 @@ import ContextMenu, {
 } from '../../ContextMenu/ContextMenu';
 import Item, { IItem } from '../Item/Item';
 
+import styles from '../FileManager.module.scss';
+
 export interface IFolder {
   parentId?: number;
   id: number;
@@ -35,7 +37,7 @@ const Folder: React.FC<IProps> = ({ title, folders, items }) => {
       return null;
     }
     return (
-      <div className='file-manager__item__children'>
+      <div className={styles.file_manager__item__children}>
         {renderFolders}
         {renderItems}
       </div>
@@ -64,12 +66,12 @@ const Folder: React.FC<IProps> = ({ title, folders, items }) => {
         onLeftClick={() => setIsOpen((prev) => !prev)}
       />
       <div
-        className='file-manager__item'
+        className={styles.file_manager__item}
         onClick={onClick}
         onContextMenu={onClick}
       >
-        <img src={src} className='file-manager__item__image' />
-        <div className='file-manager__title'>{title}</div>
+        <img src={src} className={styles.file_manager__item__image} />
+        <div className={styles.file_manager__title}>{title}</div>
       </div>
       {renderOpenFolder}
     </div>
