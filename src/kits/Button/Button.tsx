@@ -24,7 +24,7 @@ const Button: React.FC<IProps | ITextProps | IImgProps> = (props) => {
 
   const iconElement = useMemo(() => {
     if (!imgScr) {
-      return;
+      return null;
     }
     const mask = `url(${imgScr})`;
     return <span style={{ WebkitMaskImage: mask, mask }} />;

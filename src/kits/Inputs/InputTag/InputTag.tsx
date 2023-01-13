@@ -9,7 +9,7 @@ interface ITag extends Omit<ITagProps, 'color'> {
 }
 
 interface IProps {
-  label: string;
+  label?: string;
   tags: ITag[];
   secondLabel?: string;
   emptyText?: string;

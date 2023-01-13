@@ -25,14 +25,14 @@ const InputBig: React.FC<IInputProps> = (props) => {
       return null;
     }
     return <strong className={styles.label}>{secondLabel}</strong>;
-  }, []);
+  }, [secondLabel]);
 
   const HelperTextElement = useMemo(() => {
     if (!helperText) {
       return null;
     }
     return (
-      <strong
+      <div
         className={classNames(
           styles.helper,
           { [styles.helper__error]: isError },
@@ -40,9 +40,9 @@ const InputBig: React.FC<IInputProps> = (props) => {
         )}
       >
         {helperText}
-      </strong>
+      </div>
     );
-  }, [helperText]);
+  }, [helperText, isError, isSuccess]);
 
   return (
     <div className={styles.container}>
