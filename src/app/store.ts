@@ -11,13 +11,14 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import pipelineMainOptionsSlice from '../pages/PipelinesPage/redux/PipelineMainOptionsSlice';
 
 import rootReducer, { RootReducer } from './rootReducer';
 
 const persistConfig: PersistConfig<RootReducer> = {
   key: 'root',
   storage,
-  whitelist: [],
+  whitelist: [pipelineMainOptionsSlice.name],
 };
 
 const persistedReducer = persistReducer<RootReducer>(

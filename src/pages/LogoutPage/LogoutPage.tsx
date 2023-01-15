@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { logout } from '../../features/authorization/authorizationSlice';
 
 const LogoutPage: React.FC = () => {

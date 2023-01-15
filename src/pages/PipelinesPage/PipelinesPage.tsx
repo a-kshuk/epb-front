@@ -3,9 +3,9 @@ import { Button, TabBar } from '@/kits';
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
 import { IItem } from '../../components/FileManager/Item/Item';
+import { MainOptions } from './components';
 
 import './PipelinesPage.scss';
-import InfoSection from './PiplineInfo/InfoSection';
 
 const itemsMock: IItem[] = [
   { id: 1, title: 'Трубопровод 1', onPress: () => alert('click on 1') },
@@ -56,7 +56,7 @@ const PipelinesPage = () => {
         onChangeTab={setTab}
         rightElement={<Button>Сохранить</Button>}
       >
-        <InfoSection title='Основные параметры' />
+        {tab === TABS[0] ? <MainOptions /> : null}
       </TabBar>
     </FileManager>
   );

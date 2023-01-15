@@ -32,7 +32,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "./src//*",
+    "./src/*",
     // "./__tests__//*",
   ],
   "exclude": [

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
 
 export interface IAuthorizationState {
   isAuthorization: boolean;
@@ -30,7 +29,5 @@ export const authorizationSlice = createSlice({
 });
 
 export const { login, logout } = authorizationSlice.actions;
-
-export const selectCount = (state: RootState) => state.counter.value;
 
 export default authorizationSlice.reducer;

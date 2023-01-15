@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { useAppSelector } from '../../app/hooks';
+import { useAppSelector } from '../../hooks/reduxHooks';
 import styles from './Layout.module.scss';
 
 const Layout = () => {

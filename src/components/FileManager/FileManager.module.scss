@@ -1,8 +1,6 @@
 @use 'sass:map';
 @import '/src/theme/colors.scss';
-@import '/src/theme/fonts.scss';
 @import '/src/theme/mixins.scss';
-@import '/src/theme/shadows.scss';
 
 .file_manager {
   display: flex;

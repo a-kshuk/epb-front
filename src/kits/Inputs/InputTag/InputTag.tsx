@@ -18,7 +18,7 @@ interface IProps {
 }
 
 const InputTag: React.FC<IProps> = (props) => {
-  const { label, secondLabel, tags, helperText, status } = props;
+  const { label, secondLabel, tags, helperText, status, emptyText } = props;
   const color = useMemo(() => {
     if (status === 'error') {
       return 'red';
@@ -45,7 +45,9 @@ const InputTag: React.FC<IProps> = (props) => {
   const tagsElement = useMemo(() => {
     if (!tags?.length) {
       // return <Tag label='Нет данных' color={color || 'gray'} />;
-      return <strong className={styles.empty}>нет данных</strong>;
+      return (
+        <strong className={styles.empty}>{emptyText || 'нет данных'}</strong>
+      );
     }
     return (
       <React.Fragment>
