@@ -1,0 +1,42 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/fonts.scss';
+@import '/src/theme/mixins.scss';
+
+@mixin borderTable {
+  border: 1px solid map.get($gray, 4);
+}
+
+.table {
+  @include P3;
+
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+
+  tr {
+    background-color: map.get($purple, 1);
+  }
+
+  tr:nth-child(even) {
+    background-color: map.get($purple, 0.5);
+  }
+
+  tr:hover {
+    background-color: map.get($purple, 2);
+  }
+
+  th {
+    padding: 10px;
+    text-align: left;
+    background-color: map.get($purple, 5);
+    color: white;
+    text-align: center;
+    @include borderTable;
+  }
+
+  td {
+    @include borderTable;
+    padding: 10px;
+  }
+}

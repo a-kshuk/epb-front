@@ -8,3 +8,8 @@ export {
   removeWorkingMode,
   setLocation,
 } from './PipelineMainOptionsSlice';
+
+export type {
+  IMaterialMechanicalProps,
+  IWorkingMode,
+} from './PipelineMainOptionsSlice';

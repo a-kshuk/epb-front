@@ -1,36 +1,47 @@
-import React from 'react';
-import Button from '../Button/Button';
-import './ModalStyle.scss';
+import React, { memo } from 'react';
+import Button, { IButtonProps } from '../Button/Button';
+import styles from './Modal.module.scss';
 
 interface IProps {
   title: string;
   isVisible: boolean;
-  onClose: () => void;
-  onSave?: () => void;
+  onClose: (isVisible: false) => void;
+  closeButtonText?: string;
+  buttons?: IButtonProps[];
 }
 
 const Modal: React.FC<React.PropsWithChildren<IProps>> = (props) => {
-  const { isVisible, title, children, onClose, onSave } = props;
+  const {
+    isVisible,
+    title,
+    children,
+    onClose,
+    closeButtonText = 'Закрыть',
+    buttons = [],
+  } = props;
+  const setIsVisible = () => onClose(false);
 
   if (!isVisible) {
     return null;
   }
 
   return (
-    <div className='modal'>
-      <div className='modal__window'>
-        <div className='modal__header'>
-          <span className='modal__title'>{title}</span>
-          <Button onClick={onClose}>X</Button>
+    <div className={styles.modal}>
+      <div className={styles.modal__window}>
+        <div className={styles.modal__header}>
+          <h5 className={styles.modal__title}>{title}</h5>
+          <div className={styles.modal__close} onClick={setIsVisible} />
         </div>
-        <div className='modal__children'>{children}</div>
-        <div className='modal__buttons'>
-          {onSave && <button onClick={onSave}>Сохранить</button>}
-          <Button onClick={onClose}>Закрыть</Button>
+        <div className={styles.modal__children}>{children}</div>
+        <div className={styles.modal__buttons}>
+          {buttons.map((buttonPops, index) => (
+            <Button key={index} {...buttonPops}></Button>
+          ))}
+          <Button onClick={setIsVisible}>{closeButtonText}</Button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default memo(Modal);

@@ -1,17 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { title } from 'process';
 
-interface IWorkingMode {
+export interface IWorkingMode {
   id: number;
   title: string;
   temperature: number;
   pressure: number;
 }
 
-interface IMaterialMechanicalProps {
+export interface IMaterialMechanicalProps {
   idWorkMode: number;
   permissibleStresses: number;
-  permissibleStressesTest: number;
   ovality: number;
   elasticModulus: number;
 }
@@ -84,7 +82,6 @@ export const pipelineMainOptionsSlice = createSlice({
           {
             idWorkMode: id,
             permissibleStresses: 0,
-            permissibleStressesTest: 0,
             ovality: 0,
             elasticModulus: 0,
           },

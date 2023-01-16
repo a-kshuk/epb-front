@@ -89,6 +89,16 @@
   letter-spacing: -0.05em;
 }
 
+// H5/Gotham/Book/Active/Left
+@mixin H5 {
+  font-family: 'Gotham';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+}
+
 // P3/Gotham/Book/Active/left
 @mixin P3 {
   font-family: 'Gotham';

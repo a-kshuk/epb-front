@@ -1,35 +1,16 @@
-import React, { memo, useMemo } from 'react';
-import { Button, Input, InputTag } from '@/kits';
+import React, { memo } from 'react';
+import { Input } from '@/kits';
 import { useAppDispatch, useAppSelector } from '@/hooks';
+import MaterialTable from './MaterialTable/MaterialTable';
+import ModeTable from './ModeTable/ModeTable';
 import { setTitle, setRegNumber, setLocation } from '../../redux';
 
 import styles from './MainOptions.modules.scss';
 
-const MainOptions = () => {
+const MainOptions: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { title, regNumber, location, materials, workingModes } =
-    useAppSelector((state) => state.pipelineMainOptions);
-
-  const modeTags = useMemo(
-    () =>
-      workingModes.map((mode) => ({
-        label: mode.title,
-        onPress: () => {
-          console.log('Изменить тип режима работы', mode.id);
-        },
-      })),
-    [workingModes]
-  );
-
-  const materialTags = useMemo(
-    () =>
-      materials.map((material) => ({
-        label: material.title,
-        onPress: () => {
-          console.log('Изменить материал', material.id);
-        },
-      })),
-    [workingModes]
+  const { title, regNumber, location } = useAppSelector(
+    (state) => state.pipelineMainOptions
   );
 
   return (
@@ -57,14 +38,8 @@ const MainOptions = () => {
           required: true,
         }}
       />
-      <div className={styles.container__tag}>
-        <InputTag label='Режим работы' tags={modeTags} />
-        <Button>Добавить режим работы</Button>
-      </div>
-      <div className={styles.container__tag}>
-        <InputTag label='Материалы' tags={materialTags} />
-        <Button>Добавить материал</Button>
-      </div>
+      <ModeTable />
+      <MaterialTable />
     </div>
   );
 };

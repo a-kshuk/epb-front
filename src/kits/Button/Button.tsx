@@ -19,6 +19,8 @@ interface IImgProps extends Omit<IProps, 'children'> {
   children?: never;
 }
 
+export type IButtonProps = IProps | ITextProps | IImgProps;
+
 const Button: React.FC<IProps | ITextProps | IImgProps> = (props) => {
   const { children, imgScr, ...otherProps } = props;
 
