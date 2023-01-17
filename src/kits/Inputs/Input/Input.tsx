@@ -2,21 +2,31 @@ import classNames from 'classnames';
 import React, { memo, useMemo } from 'react';
 import styles from './Input.module.scss';
 
-interface IProps {
-  label?: string;
-  input?: React.DetailedHTMLProps<
+interface IProps
+  extends React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  >;
+  > {
+  label?: string;
   secondLabel?: string;
   emptyText?: string;
   helperText?: string;
   imgScr?: string;
-  status?: 'error' | 'success' | 'disabled';
+  status?: 'error' | 'success';
 }
 
 const Input: React.FC<IProps> = (props) => {
-  const { label, secondLabel, helperText, status, input, imgScr } = props;
+  const {
+    label,
+    secondLabel,
+    required,
+    helperText = required ? 'Обязательное поле' : '',
+    imgScr,
+    disabled,
+    status,
+    ...otherProps
+  } = props;
+
   const helperTextElement = useMemo(() => {
     if (!helperText) {
       return null;
@@ -28,15 +38,19 @@ const Input: React.FC<IProps> = (props) => {
     if (!label && !secondLabel) {
       return null;
     }
+
     return (
       <div className={styles.container__label}>
-        <strong className={styles.label}>{label}</strong>
+        <label className={styles.label}>
+          {label}
+          {required ? ' *' : null}
+        </label>
         {secondLabel && (
           <strong className={styles.secondLabel}>{secondLabel}</strong>
         )}
       </div>
     );
-  }, [label, secondLabel]);
+  }, [label, secondLabel, required]);
 
   const iconElement = useMemo(() => {
     if (imgScr) {
@@ -48,13 +62,12 @@ const Input: React.FC<IProps> = (props) => {
     }
     return null;
   }, [imgScr, status]);
-
   return (
     <div
       className={classNames(styles.container, {
         [styles.error]: status === 'error',
         [styles.success]: status === 'success',
-        [styles.disabled]: status === 'disabled',
+        [styles.disabled]: disabled,
       })}
     >
       {labelElement}
@@ -62,8 +75,9 @@ const Input: React.FC<IProps> = (props) => {
         <input
           className={styles.input__text}
           placeholder='Введите значение'
-          disabled={status === 'disabled'}
-          {...input}
+          disabled={disabled}
+          // required={required}
+          {...otherProps}
         />
         {iconElement}
       </div>

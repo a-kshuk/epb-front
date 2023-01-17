@@ -17,26 +17,21 @@ const MainOptions: React.FC = () => {
     <div className={styles.container}>
       <Input
         label='Название трубопровода'
-        input={{
-          value: title,
-          onChange: (e) => dispatch(setTitle(e.target.value)),
-          required: true,
-        }}
+        value={title}
+        onChange={(e) => dispatch(setTitle(e.target.value))}
+        required
       />
       <Input
         label='Регистрационный номер'
-        input={{
-          value: regNumber,
-          onChange: (e) => dispatch(setRegNumber(e.target.value)),
-        }}
+        value={regNumber}
+        onChange={(e) => dispatch(setRegNumber(e.target.value))}
+        required
       />
       <Input
         label='Местоположение'
-        input={{
-          value: location,
-          onChange: (e) => dispatch(setLocation(e.target.value)),
-          required: true,
-        }}
+        value={location}
+        onChange={(e) => dispatch(setLocation(e.target.value))}
+        required
       />
       <ModeTable />
       <MaterialTable />

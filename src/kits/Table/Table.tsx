@@ -21,44 +21,16 @@ const Table = <T extends Record<string, string>>(
               {titles[key]}
             </th>
           ))}
-          {/* <th scope='col'>Название материала</th>
-          <th scope='col'>Режим работы</th>
-          <th scope='col'>Номинальное допускаемое напряжение</th>
-          <th scope='col'>Модуль упругости</th> */}
         </tr>
       </thead>
       <tbody>
-        {keys.map((key) => (
-          <tr key={key}>
-            {columns.map((column, index) => (
+        {columns.map((column, index) => (
+          <tr key={index}>
+            {keys.map((key) => (
               <td key={`${key} ${index}`}>{column[key]}</td>
             ))}
           </tr>
         ))}
-        {/* <tr>
-          <td>183</td>
-          <td>Название материал</td>
-          <td>Название режима</td>
-          <td>1.99</td>
-        </tr>
-        <tr>
-          <td>183</td>
-          <td>Название материал</td>
-          <td>Название режима</td>
-          <td>1.99</td>
-        </tr>
-        <tr>
-          <td>183</td>
-          <td>Название материал</td>
-          <td>Название режима</td>
-          <td>1.99</td>
-        </tr>
-        <tr>
-          <td>183</td>
-          <td>Название материал</td>
-          <td>Название режима</td>
-          <td>1.99</td>
-        </tr> */}
       </tbody>
       {/* <tfoot>
         <tr>

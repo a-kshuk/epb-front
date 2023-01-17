@@ -21,7 +21,7 @@ const ModeTable: React.FC = () => {
   const { workingModes } = useAppSelector((state) => state.pipelineMainOptions);
 
   return (
-    <div className={styles.container__tag}>
+    <div className={styles.container__table}>
       <Table titles={MODE_TITLES} columns={workingModes} />
       <ModeModal />
     </div>

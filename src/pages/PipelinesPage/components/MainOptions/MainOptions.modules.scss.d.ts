@@ -1,7 +1,8 @@
 declare namespace MainOptionsModulesScssNamespace {
   export interface IMainOptionsModulesScss {
     container: string;
-    container__tag: string;
+    container__button: string;
+    container__table: string;
   }
 }
 

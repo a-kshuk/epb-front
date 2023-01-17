@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
 import Button, { IButtonProps } from '../Button/Button';
 import styles from './Modal.module.scss';
 
@@ -16,7 +16,7 @@ const Modal: React.FC<React.PropsWithChildren<IProps>> = (props) => {
     title,
     children,
     onClose,
-    closeButtonText = 'Закрыть',
+    closeButtonText,
     buttons = [],
   } = props;
   const setIsVisible = () => onClose(false);
@@ -24,6 +24,22 @@ const Modal: React.FC<React.PropsWithChildren<IProps>> = (props) => {
   if (!isVisible) {
     return null;
   }
+
+  const buttonsElement = useMemo(() => {
+    if (!buttons.length && !closeButtonText) {
+      return null;
+    }
+    return (
+      <div className={styles.modal__buttons}>
+        {buttons.map((buttonPops, index) => (
+          <Button key={index} {...buttonPops}></Button>
+        ))}
+        {closeButtonText ? (
+          <Button onClick={setIsVisible}>{closeButtonText}</Button>
+        ) : null}
+      </div>
+    );
+  }, [buttons, closeButtonText]);
 
   return (
     <div className={styles.modal}>
@@ -33,12 +49,7 @@ const Modal: React.FC<React.PropsWithChildren<IProps>> = (props) => {
           <div className={styles.modal__close} onClick={setIsVisible} />
         </div>
         <div className={styles.modal__children}>{children}</div>
-        <div className={styles.modal__buttons}>
-          {buttons.map((buttonPops, index) => (
-            <Button key={index} {...buttonPops}></Button>
-          ))}
-          <Button onClick={setIsVisible}>{closeButtonText}</Button>
-        </div>
+        {buttonsElement}
       </div>
     </div>
   );

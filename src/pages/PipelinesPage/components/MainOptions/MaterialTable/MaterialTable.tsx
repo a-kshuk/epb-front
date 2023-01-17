@@ -43,7 +43,7 @@ const MaterialTable: React.FC = () => {
   }, [materials, workingModes]);
 
   return (
-    <div className={styles.container__tag}>
+    <div className={styles.container__table}>
       <Table titles={MATERIAL_TITLES} columns={materialTables} />
       <MaterialModal />
     </div>
