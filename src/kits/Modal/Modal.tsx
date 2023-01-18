@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from 'react';
-import Button, { IButtonProps } from '../Button/Button';
+import Button, { IButtonProps } from '../Buttons/Button/Button';
 import styles from './Modal.module.scss';
 
 interface IProps {

@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { Input } from '@/kits';
 import { useAppDispatch, useAppSelector } from '@/hooks';
+import MaterialMechanicalPropsTable from './MaterialMechanicalPropsTable/MaterialMechanicalPropsTable';
 import MaterialTable from './MaterialTable/MaterialTable';
 import ModeTable from './ModeTable/ModeTable';
 import { setTitle, setRegNumber, setLocation } from '../../redux';
@@ -35,6 +36,7 @@ const MainOptions: React.FC = () => {
       />
       <ModeTable />
       <MaterialTable />
+      <MaterialMechanicalPropsTable />
     </div>
   );
 };

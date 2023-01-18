@@ -1,0 +1,29 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/mixins.scss';
+
+.button {
+  background-color: map.get($purple, 5);
+  @include maskIcon();
+  width: 24px;
+  height: 24px;
+  &:hover {
+    background-color: map.get($purple, 4);
+  }
+  &:active {
+    background-color: map.get($purple, 7);
+  }
+  &:disabled {
+    background-color: map.get($gray, 1.5);
+  }
+}
+
+.red {
+  background-color: map.get($red, 6);
+  &:hover {
+    background-color: map.get($red, 5);
+  }
+  &:active {
+    background-color: map.get($red, 7);
+  }
+}

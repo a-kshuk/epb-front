@@ -1,50 +1,63 @@
 import React, { memo, useMemo } from 'react';
-import { Button, Input, InputTag, Table } from '@/kits';
+import { Button, ButtonIcon, Input, InputTag, Table } from '@/kits';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import MaterialModal from '../MaterialModal/MaterialModal';
-import { IMaterialMechanicalProps } from '../../../redux';
+import { IMaterial } from '../../../redux';
 
 import styles from '../MainOptions.modules.scss';
 
-interface IMaterialTable extends Omit<IMaterialMechanicalProps, 'idWorkMode'> {
+interface IMaterialTable extends Omit<IMaterial, 'id'> {
   title: string;
-  mode: string;
+  buttonEdit: string;
+  buttonRemove: string;
 }
 
 const MATERIAL_TITLES: Record<keyof IMaterialTable, string> = {
   title: 'Название материала',
-  mode: 'Режим',
-  permissibleStresses: 'Номинальное допускаемое напряжение',
-  ovality: 'Овальность',
-  elasticModulus: 'Модуль упругости',
+  buttonEdit: ' ',
+  buttonRemove: ' ',
 };
 
 const MaterialTable: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { materials, workingModes } = useAppSelector(
-    (state) => state.pipelineMainOptions
+  const { materials } = useAppSelector((state) => state.pipelineMainOptions);
+
+  const materialTables = useMemo(
+    () =>
+      materials.map((mode) => ({
+        ...mode,
+        buttonEdit: (
+          <ButtonIcon
+            color='red'
+            imgScr='/images/edit-2.svg'
+            onClick={() => {
+              // setId(mode.id);
+              // setIsVisible(true);
+            }}
+          />
+        ),
+        buttonRemove: (
+          <ButtonIcon
+            color='red'
+            imgScr='/images/close-circle.svg'
+            // onClick={() => dispatch(removeWorkMode(mode.id))}
+          />
+        ),
+      })),
+    [materials]
   );
 
-  const materialTables: IMaterialTable[] = useMemo(() => {
-    const list: IMaterialTable[] = [];
-    materials.forEach(({ mechanicalProps, title }) => {
-      mechanicalProps.forEach(({ idWorkMode, ...otherProps }) => {
-        const mode =
-          workingModes.find((wm) => wm.id === idWorkMode)?.title || '';
-
-        list.push({
-          ...otherProps,
-          title,
-          mode,
-        });
-      });
-    });
-    return list;
-  }, [materials, workingModes]);
+  const tableElement = useMemo(
+    () =>
+      materialTables.length ? (
+        <Table titles={MATERIAL_TITLES} rows={materialTables} />
+      ) : null,
+    [materialTables]
+  );
 
   return (
     <div className={styles.container__table}>
-      <Table titles={MATERIAL_TITLES} columns={materialTables} />
+      {tableElement}
       <MaterialModal />
     </div>
   );

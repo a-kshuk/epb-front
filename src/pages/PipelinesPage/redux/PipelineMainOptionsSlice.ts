@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface IWorkingMode {
+export interface IWorkMode {
   id: number;
   title: string;
   temperature: number;
@@ -9,15 +9,15 @@ export interface IWorkingMode {
 
 export interface IMaterialMechanicalProps {
   idWorkMode: number;
+  idMaterial: number;
   permissibleStresses: number;
   ovality: number;
   elasticModulus: number;
 }
 
-interface IMaterial {
+export interface IMaterial {
   id: number;
   title: string;
-  mechanicalProps: IMaterialMechanicalProps[];
 }
 
 export interface IPipelineMainOptionsState {
@@ -25,7 +25,8 @@ export interface IPipelineMainOptionsState {
   regNumber: string;
   location: string;
   materials: IMaterial[];
-  workingModes: IWorkingMode[];
+  workModes: IWorkMode[];
+  materialMechanicalProps: IMaterialMechanicalProps[];
 }
 
 const initialState: IPipelineMainOptionsState = {
@@ -33,7 +34,8 @@ const initialState: IPipelineMainOptionsState = {
   regNumber: '',
   location: '',
   materials: [],
-  workingModes: [],
+  workModes: [],
+  materialMechanicalProps: [],
 };
 
 export const pipelineMainOptionsSlice = createSlice({
@@ -49,24 +51,52 @@ export const pipelineMainOptionsSlice = createSlice({
     setLocation: (state, action: PayloadAction<string>) => {
       state.location = action.payload;
     },
-    addMaterial: (
-      state,
-      action: PayloadAction<{
-        title: string;
-        mechanicalProps: IMaterialMechanicalProps[];
-      }>
-    ) => {
-      const { title, mechanicalProps } = action.payload;
-      const id = state.materials[state.materials.length - 1]?.id || 1;
-      state.materials = [...state.materials, { id, title, mechanicalProps }];
-    },
-    removeMaterial: (state, action: PayloadAction<{ materialId: number }>) => {
-      const materials = state.materials.filter(
-        (material) => material.id !== action.payload.materialId
+
+    addMaterial: (state, action: PayloadAction<string>) => {
+      const title = action.payload;
+      const id = (state.materials[state.materials.length - 1]?.id || 0) + 1;
+      const mechanicalProps: IMaterialMechanicalProps[] = state.workModes.map(
+        ({ id: idWorkMode }) => ({
+          idWorkMode,
+          idMaterial: id,
+          permissibleStresses: 0,
+          ovality: 0,
+          elasticModulus: 0,
+        })
       );
-      state.materials = [...materials];
+      state.materials = [...state.materials, { id, title }];
+      state.materialMechanicalProps = [
+        ...state.materialMechanicalProps,
+        ...mechanicalProps,
+      ];
     },
-    addWorkingMode: (
+
+    editMaterialMechanicalProps: (
+      state,
+      action: PayloadAction<IMaterialMechanicalProps>
+    ) => {
+      const mechanicalProp = action.payload;
+      const mechanicalProps = state.materialMechanicalProps.map((props) =>
+        props.idWorkMode === mechanicalProp.idWorkMode &&
+        props.idMaterial === mechanicalProp.idMaterial
+          ? mechanicalProp
+          : props
+      );
+      state.materialMechanicalProps = mechanicalProps;
+    },
+
+    removeMaterial: (state, action: PayloadAction<number>) => {
+      const materials = state.materials.filter(
+        (material) => material.id !== action.payload
+      );
+      const materialMechanicalProps = state.materialMechanicalProps.filter(
+        (mechanicalProps) => mechanicalProps.idMaterial !== action.payload
+      );
+      state.materials = materials;
+      state.materialMechanicalProps = materialMechanicalProps;
+    },
+
+    addWorkMode: (
       state,
       action: PayloadAction<{
         temperature: number;
@@ -75,42 +105,38 @@ export const pipelineMainOptionsSlice = createSlice({
       }>
     ) => {
       const { temperature, pressure, title } = action.payload;
-      const id = state.workingModes[state.workingModes.length - 1]?.id || 1;
-      const materials = state.materials.map((material) => {
-        const mechanicalProps: IMaterialMechanicalProps[] = [
-          ...material.mechanicalProps,
-          {
-            idWorkMode: id,
-            permissibleStresses: 0,
-            ovality: 0,
-            elasticModulus: 0,
-          },
-        ];
-
-        return { ...material, mechanicalProps };
-      });
-      state.materials = materials;
-      state.workingModes = [
-        ...state.workingModes,
+      const id = (state.workModes[state.workModes.length - 1]?.id || 0) + 1;
+      const mechanicalProps = state.materials.map((material) => ({
+        idMaterial: material.id,
+        idWorkMode: id,
+        permissibleStresses: 0,
+        ovality: 0,
+        elasticModulus: 0,
+      }));
+      state.materialMechanicalProps = mechanicalProps;
+      state.workModes = [
+        ...state.workModes,
         { id, temperature, pressure, title },
       ];
     },
-    removeWorkingMode: (
-      state,
-      action: PayloadAction<{ workingModeId: number }>
-    ) => {
-      const { workingModeId } = action.payload;
-      const materials = state.materials.map((material) => {
-        const mechanicalProps = material.mechanicalProps.filter(
-          ({ idWorkMode }) => idWorkMode !== workingModeId
-        );
-        return { ...material, mechanicalProps };
-      });
-      state.materials = materials;
-      const workingModes = state.workingModes.filter(
-        (material) => material.id !== workingModeId
+
+    editWorkMode: (state, action: PayloadAction<IWorkMode>) => {
+      const workMode = action.payload;
+      state.workModes = state.workModes.map((mode) =>
+        mode.id === workMode.id ? workMode : mode
       );
-      state.workingModes = [...workingModes];
+    },
+
+    removeWorkMode: (state, action: PayloadAction<number>) => {
+      const workModeId = action.payload;
+      const mechanicalProps = state.materialMechanicalProps.filter(
+        (props) => props.idWorkMode === workModeId
+      );
+      const workModes = state.workModes.filter(
+        (material) => material.id !== workModeId
+      );
+      state.materialMechanicalProps = mechanicalProps;
+      state.workModes = workModes;
     },
   },
 });
@@ -121,8 +147,9 @@ export const {
   setLocation,
   addMaterial,
   removeMaterial,
-  addWorkingMode,
-  removeWorkingMode,
+  addWorkMode,
+  editWorkMode,
+  removeWorkMode,
 } = pipelineMainOptionsSlice.actions;
 
 export default pipelineMainOptionsSlice;

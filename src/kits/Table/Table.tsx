@@ -1,16 +1,16 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import styles from './Table.module.scss';
 
 interface IProps<T extends Record<string, string>> {
   titles: T;
-  columns: Record<keyof T, React.ReactNode>[];
+  rows: Record<keyof T, React.ReactNode>[];
 }
 
 const Table = <T extends Record<string, string>>(
   props: IProps<T>
 ): JSX.Element => {
-  const { columns, titles } = props;
+  const { rows, titles } = props;
   const keys = useMemo(() => Object.keys(titles), [titles]);
   return (
     <table className={styles.table}>
@@ -24,20 +24,17 @@ const Table = <T extends Record<string, string>>(
         </tr>
       </thead>
       <tbody>
-        {columns.map((column, index) => (
+        {rows.map((row, index) => (
           <tr key={index}>
             {keys.map((key) => (
-              <td key={`${key} ${index}`}>{column[key]}</td>
+              <td key={`${key} ${index}`}>{row[key]}</td>
             ))}
           </tr>
         ))}
       </tbody>
       {/* <tfoot>
         <tr>
-          <th scope='row' colSpan={2}>
-            Total albums
-          </th>
-          <td>77</td>
+          <td colSpan={keys.length}> Нет данных</td>
         </tr>
       </tfoot> */}
     </table>

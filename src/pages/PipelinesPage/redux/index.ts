@@ -2,14 +2,16 @@ export {
   default as pipelineMainOptionsSlice,
   setTitle,
   setRegNumber,
+  setLocation,
   addMaterial,
   removeMaterial,
-  addWorkingMode,
-  removeWorkingMode,
-  setLocation,
+  addWorkMode,
+  editWorkMode,
+  removeWorkMode,
 } from './PipelineMainOptionsSlice';
 
 export type {
+  IMaterial,
   IMaterialMechanicalProps,
-  IWorkingMode,
+  IWorkMode,
 } from './PipelineMainOptionsSlice';
