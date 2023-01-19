@@ -71,18 +71,11 @@ export const pipelineMainOptionsSlice = createSlice({
       ];
     },
 
-    editMaterialMechanicalProps: (
-      state,
-      action: PayloadAction<IMaterialMechanicalProps>
-    ) => {
-      const mechanicalProp = action.payload;
-      const mechanicalProps = state.materialMechanicalProps.map((props) =>
-        props.idWorkMode === mechanicalProp.idWorkMode &&
-        props.idMaterial === mechanicalProp.idMaterial
-          ? mechanicalProp
-          : props
+    editMaterial: (state, action: PayloadAction<IMaterial>) => {
+      const material = action.payload;
+      state.materials = state.materials.map((item) =>
+        item.id === material.id ? material : item
       );
-      state.materialMechanicalProps = mechanicalProps;
     },
 
     removeMaterial: (state, action: PayloadAction<number>) => {
@@ -138,6 +131,20 @@ export const pipelineMainOptionsSlice = createSlice({
       state.materialMechanicalProps = mechanicalProps;
       state.workModes = workModes;
     },
+
+    editMaterialMechanicalProps: (
+      state,
+      action: PayloadAction<IMaterialMechanicalProps>
+    ) => {
+      const mechanicalProp = action.payload;
+      const mechanicalProps = state.materialMechanicalProps.map((props) =>
+        props.idWorkMode === mechanicalProp.idWorkMode &&
+        props.idMaterial === mechanicalProp.idMaterial
+          ? mechanicalProp
+          : props
+      );
+      state.materialMechanicalProps = mechanicalProps;
+    },
   },
 });
 
@@ -146,10 +153,12 @@ export const {
   setRegNumber,
   setLocation,
   addMaterial,
+  editMaterial,
   removeMaterial,
   addWorkMode,
   editWorkMode,
   removeWorkMode,
+  editMaterialMechanicalProps,
 } = pipelineMainOptionsSlice.actions;
 
 export default pipelineMainOptionsSlice;

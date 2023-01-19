@@ -30,7 +30,6 @@ const FileManager: React.FC<IFileManagerProps> = ({
         {renderItems}
       </div>
       <div className={styles.file_manager__children}>{children}</div>
-      {/* {children} */}
     </div>
   );
 };

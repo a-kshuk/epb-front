@@ -1,4 +1,5 @@
 import React, { memo, useMemo } from 'react';
+import ButtonIcon from '../Buttons/ButtonIcon/ButtonIcon';
 import Button, { IButtonProps } from '../Buttons/Button/Button';
 import styles from './Modal.module.scss';
 
@@ -45,8 +46,12 @@ const Modal: React.FC<React.PropsWithChildren<IProps>> = (props) => {
     <div className={styles.modal}>
       <div className={styles.modal__window}>
         <div className={styles.modal__header}>
-          <h5 className={styles.modal__title}>{title}</h5>
-          <div className={styles.modal__close} onClick={setIsVisible} />
+          <label className={styles.modal__title}>{title}</label>
+          <ButtonIcon
+            color='red'
+            imgScr='/images/close-circle.svg'
+            onClick={setIsVisible}
+          />
         </div>
         <div className={styles.modal__children}>{children}</div>
         {buttonsElement}

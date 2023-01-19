@@ -4,10 +4,12 @@ export {
   setRegNumber,
   setLocation,
   addMaterial,
+  editMaterial,
   removeMaterial,
   addWorkMode,
   editWorkMode,
   removeWorkMode,
+  editMaterialMechanicalProps,
 } from './PipelineMainOptionsSlice';
 
 export type {

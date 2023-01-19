@@ -45,4 +45,5 @@
 .container_children {
   padding: $mediumPadding;
   background-color: map.get($purple, 0.5);
+  flex: 1;
 }

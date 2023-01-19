@@ -40,6 +40,9 @@
   }
 
   .file_manager__children {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    flex: 1;
   }
 }

@@ -1,8 +1,8 @@
-import React, { memo, useMemo } from 'react';
-import { Button, ButtonIcon, Input, InputTag, Table } from '@/kits';
+import React, { memo, useMemo, useState } from 'react';
+import { Button, ButtonIcon, Table } from '@/kits';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import MaterialModal from '../MaterialModal/MaterialModal';
-import { IMaterial } from '../../../redux';
+import { IMaterial, removeMaterial } from '../../../redux';
 
 import styles from '../MainOptions.modules.scss';
 
@@ -19,20 +19,22 @@ const MATERIAL_TITLES: Record<keyof IMaterialTable, string> = {
 };
 
 const MaterialTable: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [material, setMaterial] = useState<IMaterial | undefined>();
   const dispatch = useAppDispatch();
   const { materials } = useAppSelector((state) => state.pipelineMainOptions);
 
   const materialTables = useMemo(
     () =>
-      materials.map((mode) => ({
-        ...mode,
+      materials.map((item) => ({
+        ...item,
         buttonEdit: (
           <ButtonIcon
             color='red'
             imgScr='/images/edit-2.svg'
             onClick={() => {
-              // setId(mode.id);
-              // setIsVisible(true);
+              setMaterial(item);
+              setIsVisible(true);
             }}
           />
         ),
@@ -40,7 +42,7 @@ const MaterialTable: React.FC = () => {
           <ButtonIcon
             color='red'
             imgScr='/images/close-circle.svg'
-            // onClick={() => dispatch(removeWorkMode(mode.id))}
+            onClick={() => dispatch(removeMaterial(item.id))}
           />
         ),
       })),
@@ -58,7 +60,19 @@ const MaterialTable: React.FC = () => {
   return (
     <div className={styles.container__table}>
       {tableElement}
-      <MaterialModal />
+      <Button
+        onClick={() => {
+          setMaterial(undefined);
+          setIsVisible(true);
+        }}
+      >
+        Добавить материал
+      </Button>
+      <MaterialModal
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+        material={material}
+      />
     </div>
   );
 };
