@@ -1,0 +1,100 @@
+import React, { memo, useMemo } from 'react';
+import { Button, ButtonIcon, Table } from '@/kits';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { ELEMENT_LABEL } from './constants';
+
+import {
+  addElement,
+  moveDownElement,
+  moveUpElement,
+  removeElement,
+} from '../../../redux';
+
+const THICKNESS_TITLES = {
+  moveUp: ' ',
+  moveDown: ' ',
+  number: '№ элемента',
+  typePipeline: 'Тип элемента',
+  remove: ' ',
+  add: ' ',
+};
+
+const PipelineElement: React.FC = () => {
+  const dispatch = useAppDispatch();
+  // const { materials } = useAppSelector((state) => state.pipelineMainOptions);
+  const { elements } = useAppSelector((state) => state.pipelineElements);
+
+  const list = useMemo(() => {
+    const length = elements.length;
+    const listElement = [...elements];
+    listElement.sort((a, b) => a.position - b.position);
+
+    return listElement.map((element) => ({
+      moveUp: (
+        <ButtonIcon
+          imgScr='/images/arrow-circle-up.svg'
+          disabled={element.position === 1}
+          onClick={() => dispatch(moveUpElement(element.position))}
+        />
+      ),
+      moveDown: (
+        <ButtonIcon
+          imgScr='/images/arrow-circle-down.svg'
+          disabled={element.position === length}
+          onClick={() => dispatch(moveDownElement(element.position))}
+        />
+      ),
+      number: element.position,
+      typePipeline: ELEMENT_LABEL[element.type],
+      remove: (
+        <ButtonIcon
+          imgScr='/images/minus-circle.svg'
+          color='red'
+          onClick={() => dispatch(removeElement(element.position))}
+        />
+      ),
+      add: (
+        <ButtonIcon
+          imgScr='/images/add-circle.svg'
+          color='red'
+          onClick={() =>
+            dispatch(
+              addElement({
+                position: element.position + 1,
+                type: element.type,
+              })
+            )
+          }
+        />
+      ),
+    }));
+  }, [elements]);
+
+  if (!elements.length) {
+    return (
+      <Button
+        onClick={() => dispatch(addElement({ position: 1, type: 'bend' }))}
+      >
+        Добавить элемент трубопровода
+      </Button>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+      }}
+    >
+      <div>
+        <Table titles={THICKNESS_TITLES} rows={list} />
+      </div>
+      {/* <Table titles={THICKNESS_TITLES} rows={MOCK}></Table> */}
+    </div>
+  );
+};
+
+export default memo(PipelineElement);

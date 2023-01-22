@@ -3,7 +3,7 @@ import { Button, TabBar } from '@/kits';
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
 import { IItem } from '../../components/FileManager/Item/Item';
-import { MainOptions } from './components';
+import { MainOptions, Thickness } from './components';
 
 import './PipelinesPage.scss';
 
@@ -45,12 +45,12 @@ const foldersMock: IFolder[] = [
 
 const TABS = [
   'Основные параметры',
-  'Элементы трубопровода',
+  'Толщинометрия',
   'Физико-механические свойства',
 ];
 
 const PipelinesPage = () => {
-  const [tab, setTab] = useState(TABS[0]);
+  const [tab, setTab] = useState(TABS[1]);
 
   return (
     <FileManager items={itemsMock} folders={foldersMock}>
@@ -61,6 +61,7 @@ const PipelinesPage = () => {
         rightElement={<Button>Сохранить</Button>}
       >
         {tab === TABS[0] ? <MainOptions /> : null}
+        {tab === TABS[1] ? <Thickness /> : null}
       </TabBar>
     </FileManager>
   );

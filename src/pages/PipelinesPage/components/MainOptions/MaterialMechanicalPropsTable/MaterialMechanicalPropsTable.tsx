@@ -17,7 +17,7 @@ const MATERIAL_TITLES: Record<keyof IMaterialTable, string> = {
   material: 'Название материала',
   mode: 'Режим',
   permissibleStresses: 'Номинальное допускаемое напряжение',
-  ovality: 'Овальность',
+  // ovality: 'Овальность',
   elasticModulus: 'Модуль упругости',
   buttonEdit: ' ',
 };

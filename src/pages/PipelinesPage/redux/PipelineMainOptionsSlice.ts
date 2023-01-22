@@ -11,7 +11,7 @@ export interface IMaterialMechanicalProps {
   idWorkMode: number;
   idMaterial: number;
   permissibleStresses: number;
-  ovality: number;
+  // ovality: number;
   elasticModulus: number;
 }
 

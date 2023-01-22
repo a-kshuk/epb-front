@@ -30,19 +30,19 @@ const MechanicalPropsModal: React.FC<IProps> = (props) => {
   useEffect(() => {
     if (mechanicalProps) {
       setValue('permissibleStresses', mechanicalProps.permissibleStresses);
-      setValue('ovality', mechanicalProps.ovality);
+      // setValue('ovality', mechanicalProps.ovality);
       setValue('elasticModulus', mechanicalProps.elasticModulus);
       return;
     }
   }, [mechanicalProps]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    const { permissibleStresses, ovality, elasticModulus } = data;
+    const { permissibleStresses, elasticModulus } = data;
     dispatch(
       editMaterialMechanicalProps({
         ...(mechanicalProps as IMaterialMechanicalProps),
         permissibleStresses: +permissibleStresses,
-        ovality: +ovality,
+        // ovality: +ovality,
         elasticModulus: +elasticModulus,
       })
     );
@@ -78,7 +78,7 @@ const MechanicalPropsModal: React.FC<IProps> = (props) => {
             />
           )}
         />
-        <Controller
+        {/* <Controller
           name='ovality'
           control={control}
           rules={{ required: true }}
@@ -92,7 +92,7 @@ const MechanicalPropsModal: React.FC<IProps> = (props) => {
               {...field}
             />
           )}
-        />
+        /> */}
         <Controller
           name='elasticModulus'
           control={control}
