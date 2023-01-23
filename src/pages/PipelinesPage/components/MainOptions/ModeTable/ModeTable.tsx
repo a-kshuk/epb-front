@@ -1,5 +1,5 @@
 import React, { memo, useMemo, useState } from 'react';
-import { Button, ButtonIcon, Table } from '@/kits';
+import { Button, ButtonIcon, Table } from '@/shared/ui';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import ModeModal from '../ModeModal/ModeModal';
 import { IWorkMode, removeWorkMode } from '../../../redux';

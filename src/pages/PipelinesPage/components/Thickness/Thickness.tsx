@@ -13,7 +13,7 @@ const Thickness: React.FC = () => {
       }}
     >
       <PipelineElement />
-      <ThicknessPoint />
+      {/* <ThicknessPoint /> */}
       {/* <Table titles={THICKNESS_TITLES} rows={MOCK}></Table> */}
     </div>
   );

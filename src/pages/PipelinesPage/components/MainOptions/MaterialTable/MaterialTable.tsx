@@ -1,5 +1,5 @@
 import React, { memo, useMemo, useState } from 'react';
-import { Button, ButtonIcon, Table } from '@/kits';
+import { Button, ButtonIcon, Table } from '@/shared/ui';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import MaterialModal from '../MaterialModal/MaterialModal';
 import { IMaterial, removeMaterial } from '../../../redux';

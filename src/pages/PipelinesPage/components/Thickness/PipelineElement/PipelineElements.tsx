@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from 'react';
-import { Button, ButtonIcon, Dropdown, Table } from '@/kits';
+import { Button, ButtonIcon, Dropdown, Table } from '@/shared/ui';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { ELEMENT_LABEL } from './constants';
 

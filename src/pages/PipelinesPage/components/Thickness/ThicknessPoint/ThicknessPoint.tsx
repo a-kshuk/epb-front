@@ -1,5 +1,5 @@
 import React, { memo, useMemo, useState } from 'react';
-import { ButtonIcon, Input, Table } from '@/kits';
+import { ButtonIcon, Input, Table } from '@/shared/ui';
 import { useAppSelector } from '@/hooks';
 
 const THICKNESS_TITLES = {

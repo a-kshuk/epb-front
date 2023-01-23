@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Input } from '@/kits';
+import { Input } from '@/shared/ui';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import MaterialMechanicalPropsTable from './MaterialMechanicalPropsTable/MaterialMechanicalPropsTable';
 import MaterialTable from './MaterialTable/MaterialTable';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, TabBar } from '@/kits';
+import { Button, TabBar } from '@/shared/ui';
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
 import { IItem } from '../../components/FileManager/Item/Item';
