@@ -18,7 +18,7 @@ const initialState: IPipelineElementState = {
 };
 
 const pipelineElementsSlice = createSlice({
-  name: 'pipeElements',
+  name: 'pipelineElements',
   initialState,
   reducers: {
     addElement: (
@@ -49,6 +49,27 @@ const pipelineElementsSlice = createSlice({
       }));
     },
 
+    moveUpElement: (state, action: PayloadAction<number>) => {
+      const position = action.payload;
+      if (position <= 1) {
+        return;
+      }
+      const updatePosition = (oldPositions: number): number => {
+        if (oldPositions === position) {
+          return position - 1;
+        }
+        if (oldPositions === position - 1) {
+          return position;
+        }
+        return oldPositions;
+      };
+      const elements = state.elements.map((element) => ({
+        ...element,
+        position: updatePosition(element.position),
+      }));
+      state.elements = elements;
+    },
+
     moveDownElement: (state, action: PayloadAction<number>) => {
       const position = action.payload;
       if (position >= state.elements.length) {
@@ -70,32 +91,25 @@ const pipelineElementsSlice = createSlice({
       state.elements = elements;
     },
 
-    moveUpElement: (state, action: PayloadAction<number>) => {
-      const position = action.payload;
-      if (position <= 1) {
-        return;
-      }
-      const updatePosition = (oldPositions: number): number => {
-        if (oldPositions === position) {
-          console.log('===', oldPositions);
-          return position - 1;
-        }
-        if (oldPositions === position - 1) {
-          console.log('!==', oldPositions);
-          return position;
-        }
-        return oldPositions;
-      };
-      const elements = state.elements.map((element) => ({
-        ...element,
-        position: updatePosition(element.position),
+    changeTypeElement: (
+      state,
+      action: PayloadAction<{ position: number; type: IPileType }>
+    ) => {
+      const { position, type } = action.payload;
+      state.elements = state.elements.map((el) => ({
+        ...el,
+        type: el.position === position ? type : el.type,
       }));
-      state.elements = elements;
     },
   },
 });
 
-export const { addElement, removeElement, moveDownElement, moveUpElement } =
-  pipelineElementsSlice.actions;
+export const {
+  addElement,
+  removeElement,
+  moveDownElement,
+  moveUpElement,
+  changeTypeElement,
+} = pipelineElementsSlice.actions;
 
 export default pipelineElementsSlice;

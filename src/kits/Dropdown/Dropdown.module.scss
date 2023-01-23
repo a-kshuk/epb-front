@@ -1,0 +1,56 @@
+@use 'sass:map';
+@import '/src/theme/colors.scss';
+@import '/src/theme/mixins.scss';
+@import '/src/theme/shadows.scss';
+
+.dropdown {
+  box-sizing: border-box;
+  @include autoLayout;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 10px;
+  background: $white;
+  @include shadowGray2px;
+  border-radius: 5px;
+  min-width: 160px;
+  @include noSelect;
+}
+
+.selector {
+  margin-top: 3px;
+  box-sizing: border-box;
+  position: absolute;
+  padding: 10px 0;
+  background: $white;
+  border-radius: 5px;
+  min-width: 160px;
+  @include noSelect;
+  border: 2px solid map.get($purple, 2);
+
+  p {
+    text-align: left;
+    padding: 5px 10px;
+    &:hover {
+      background: map.get($purple, 0.5);
+    }
+  }
+}
+
+.context_menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.arrow {
+  @include maskIcon('#{$imgPath}/arrow-right.svg');
+  background-color: map.get($gray, 4);
+  width: 12px;
+  height: 12px;
+}
+
+.arrow__down {
+  transform: rotate(90deg);
+}

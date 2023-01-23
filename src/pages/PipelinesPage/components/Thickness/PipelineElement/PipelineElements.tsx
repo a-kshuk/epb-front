@@ -1,10 +1,11 @@
 import React, { memo, useMemo } from 'react';
-import { Button, ButtonIcon, Table } from '@/kits';
+import { Button, ButtonIcon, Dropdown, Table } from '@/kits';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { ELEMENT_LABEL } from './constants';
 
 import {
   addElement,
+  changeTypeElement,
   moveDownElement,
   moveUpElement,
   removeElement,
@@ -45,7 +46,20 @@ const PipelineElement: React.FC = () => {
         />
       ),
       number: element.position,
-      typePipeline: ELEMENT_LABEL[element.type],
+      typePipeline: (
+        <Dropdown
+          items={ELEMENT_LABEL}
+          selectedKey={element.type}
+          onChange={(type) =>
+            dispatch(
+              changeTypeElement({
+                position: element.position,
+                type: type,
+              })
+            )
+          }
+        />
+      ),
       remove: (
         <ButtonIcon
           imgScr='/images/minus-circle.svg'

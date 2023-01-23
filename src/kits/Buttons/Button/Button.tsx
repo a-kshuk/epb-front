@@ -2,26 +2,16 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import styles from './Button.module.scss';
 
-interface IProps
+export interface IButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  imgScr: string;
+  imgScr?: string;
   children: string;
 }
 
-interface ITextProps extends Omit<IProps, 'imgScr'> {
-  imgScr?: never;
-}
-
-interface IImgProps extends Omit<IProps, 'children'> {
-  children?: never;
-}
-
-export type IButtonProps = IProps | ITextProps | IImgProps;
-
-const Button: React.FC<IProps | ITextProps | IImgProps> = (props) => {
+const Button: React.FC<IButtonProps> = (props) => {
   const { children, imgScr, ...otherProps } = props;
 
   const iconElement = useMemo(() => {

@@ -25,4 +25,5 @@ export {
   removeElement,
   moveDownElement,
   moveUpElement,
+  changeTypeElement,
 } from './pipelineElementsSlice';

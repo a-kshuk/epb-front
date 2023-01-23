@@ -24,10 +24,10 @@
     background-color: map.get($purple, 4);
   }
 
-  &:focus {
-    background-color: map.get($purple, 5);
-    border: 2px solid map.get($purple, 0.5);
-  }
+  // &:focus {
+  //   background-color: map.get($purple, 5);
+  //   border: 2px solid map.get($purple, 0.5);
+  // }
 
   &:active {
     background-color: map.get($purple, 7);
