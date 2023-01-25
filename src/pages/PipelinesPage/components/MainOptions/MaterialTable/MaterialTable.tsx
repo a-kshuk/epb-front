@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useState } from 'react';
-import { Button, ButtonIcon, Table } from '@/shared/ui';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { Button, ButtonIcon, Table } from 'shared/ui';
+import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import MaterialModal from '../MaterialModal/MaterialModal';
 import { IMaterial, removeMaterial } from '../../../redux';
 

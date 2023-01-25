@@ -21,19 +21,18 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "useDefineForClassFields": true,
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
+      "shared/*": ["src/shared/*"],
+      "entities/*": ["src/entities/*"],
     },
     "downlevelIteration": true,
     "skipLibCheck": true
   },
   "include": [
     "./src/*",
-    // "./__tests__//*",
+    "./src/app/store/types.d.ts"
   ],
   "exclude": [
     "node_modules",

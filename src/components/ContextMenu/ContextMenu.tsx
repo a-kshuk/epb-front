@@ -14,7 +14,8 @@ interface IProps {
 export interface IContextMenuRef {
   handleClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
-// TODO: Возможно нужно сделать глобальным объектом
+
+// eslint-disable-next-line react/display-name
 const ContextMenu = React.forwardRef<IContextMenuRef, IProps>((props, ref) => {
   const { items, onLeftClick } = props;
   const [isOpen, setIsOpen] = useState(false);

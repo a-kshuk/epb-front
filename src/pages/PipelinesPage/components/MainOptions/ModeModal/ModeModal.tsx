@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { Button, Input, Modal } from '@/shared/ui';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { Button, Input, Modal } from 'shared/ui';
+import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import { IWorkMode, addWorkMode, editWorkMode } from '../../../redux';
 
 import styles from '../MainOptions.modules.scss';

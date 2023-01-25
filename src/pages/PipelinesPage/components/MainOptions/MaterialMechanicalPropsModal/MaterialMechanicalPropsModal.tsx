@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Input, Modal } from '@/shared/ui';
-import { useAppDispatch } from '@/hooks';
+import { Button, Input, Modal } from 'shared/ui';
+import { useAppDispatch } from 'shared/hooks';
 import styles from '../MainOptions.modules.scss';
 import {
   editMaterialMechanicalProps,

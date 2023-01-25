@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useState } from 'react';
-import { ButtonIcon, Input, Table } from '@/shared/ui';
-import { useAppSelector } from '@/hooks';
+import { ButtonIcon, Input, Table } from 'shared/ui';
+import { useAppSelector } from 'shared/hooks';
 
 const THICKNESS_TITLES = {
   moveUp: ' ',
@@ -21,7 +21,7 @@ const MOCK = [
   },
 ];
 
-const ThiknessPoint: React.FC = () => {
+const ThicknessPoint: React.FC = () => {
   const [thicknesses, setThicknesses] = useState(MOCK);
   const { materials } = useAppSelector((state) => state.pipelineMainOptions);
 
@@ -98,4 +98,4 @@ const ThiknessPoint: React.FC = () => {
   );
 };
 
-export default memo(ThiknessPoint);
+export default memo(ThicknessPoint);

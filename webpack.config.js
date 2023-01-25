@@ -101,7 +101,8 @@ module.exports = (env) => {
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        shared: path.resolve(__dirname, './src/shared'),
+        entities: path.resolve(__dirname, './src/entities'),
       },
       extensions: ['.ts', '.tsx', '.js', '.scss'],
     },

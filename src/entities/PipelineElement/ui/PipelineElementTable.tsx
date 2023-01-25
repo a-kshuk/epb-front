@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
-import { Button, ButtonIcon, Dropdown, Table } from '@/shared/ui';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import { ELEMENT_LABEL } from './constants';
+import { Button, ButtonIcon, Dropdown, Table } from 'shared/ui';
+import { useAppDispatch, useAppSelector } from 'shared/hooks';
+import { ELEMENT_LABEL } from '../constants';
 
 import {
   addElement,
@@ -9,7 +9,7 @@ import {
   moveDownElement,
   moveUpElement,
   removeElement,
-} from '../../../redux';
+} from '../model';
 
 const THICKNESS_TITLES = {
   moveUp: ' ',
@@ -20,9 +20,8 @@ const THICKNESS_TITLES = {
   add: ' ',
 };
 
-const PipelineElement: React.FC = () => {
+const PipelineElementTable: React.FC = () => {
   const dispatch = useAppDispatch();
-  // const { materials } = useAppSelector((state) => state.pipelineMainOptions);
   const { elements } = useAppSelector((state) => state.pipelineElements);
 
   const list = useMemo(() => {
@@ -106,9 +105,8 @@ const PipelineElement: React.FC = () => {
       <div>
         <Table titles={THICKNESS_TITLES} rows={list} />
       </div>
-      {/* <Table titles={THICKNESS_TITLES} rows={MOCK}></Table> */}
     </div>
   );
 };
 
-export default memo(PipelineElement);
+export default memo(PipelineElementTable);

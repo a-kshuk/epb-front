@@ -1,4 +1,4 @@
-import { IPileType } from '../../../../redux/types';
+import { IPileType } from '../../types';
 
 export const ELEMENT_LABEL: Record<IPileType, string> = {
   straight: 'Труба',

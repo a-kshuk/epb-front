@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import NewsPage from './pages/NewsPage/NewsPage';
-import SingInPage from './pages/SingInPage/SingInPage';
-import SingUpPage from './pages/SingUpPage/SingUpPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import Layout from './components/Layout/Layout';
-import LogoutPage from './pages/LogoutPage/LogoutPage';
-import PipelinesPage from './pages/PipelinesPage/PipelinesPage';
+import HomePage from '../pages/HomePage/HomePage';
+import NewsPage from '../pages/NewsPage/NewsPage';
+import SingInPage from '../pages/SingInPage/SingInPage';
+import SingUpPage from '../pages/SingUpPage/SingUpPage';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+import Layout from '../components/Layout/Layout';
+import LogoutPage from '../pages/LogoutPage/LogoutPage';
+import PipelinesPage from '../pages/PipelinesPage/PipelinesPage';
 
 function App() {
   return (

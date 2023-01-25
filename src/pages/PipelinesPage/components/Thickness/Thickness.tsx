@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import PipelineElement from './PipelineElement/PipelineElements';
+import { PipelineElementTable } from 'entities/PipelineElement';
 import ThicknessPoint from './ThicknessPoint/ThicknessPoint';
 
 const Thickness: React.FC = () => {
@@ -12,7 +12,7 @@ const Thickness: React.FC = () => {
         justifyContent: 'center',
       }}
     >
-      <PipelineElement />
+      <PipelineElementTable />
       {/* <ThicknessPoint /> */}
       {/* <Table titles={THICKNESS_TITLES} rows={MOCK}></Table> */}
     </div>

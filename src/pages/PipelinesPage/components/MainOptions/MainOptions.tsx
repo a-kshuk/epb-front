@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import { Input } from '@/shared/ui';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { Input } from 'shared/ui';
+import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import MaterialMechanicalPropsTable from './MaterialMechanicalPropsTable/MaterialMechanicalPropsTable';
 import MaterialTable from './MaterialTable/MaterialTable';
 import ModeTable from './ModeTable/ModeTable';

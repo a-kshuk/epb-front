@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/reduxHooks';
+import { useAppDispatch } from 'shared/hooks';
 import { login } from '../../features/authorization/authorizationSlice';
 
 function SingInPage() {

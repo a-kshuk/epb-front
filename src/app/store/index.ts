@@ -1,4 +1,4 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -17,7 +17,7 @@ import rootReducer, { RootReducer } from './rootReducer';
 const persistConfig: PersistConfig<RootReducer> = {
   key: 'root',
   storage,
-  whitelist: ['pipelineMainOptions', 'pipelineElements'],
+  whitelist: ['pipelineMainOptions', 'pipelineElements', 'straightPipelines'],
 };
 
 const persistedReducer = persistReducer<RootReducer>(
@@ -36,12 +36,3 @@ export const store = configureStore({
 });
 
 export const persister = persistStore(store);
-
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
