@@ -43,11 +43,7 @@ const foldersMock: IFolder[] = [
   { id: 2, title: 'Папка 2' },
 ];
 
-const TABS = [
-  'Основные параметры',
-  'Толщинометрия',
-  'Физико-механические свойства',
-];
+const TABS = ['Основные параметры', 'Участки трубопровода', 'Толщинометрия'];
 
 const PipelinesPage = () => {
   const [tab, setTab] = useState(TABS[1]);

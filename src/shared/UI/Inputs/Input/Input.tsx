@@ -15,7 +15,10 @@ interface IProps
   status?: 'error' | 'success';
 }
 
-const Input: React.FC<IProps> = (props) => {
+type IRef = HTMLInputElement;
+
+// eslint-disable-next-line react/display-name
+const Input = React.forwardRef<IRef, IProps>((props, ref) => {
   const {
     label,
     secondLabel,
@@ -73,10 +76,10 @@ const Input: React.FC<IProps> = (props) => {
       {labelElement}
       <div className={styles.input__container}>
         <input
+          ref={ref}
           className={styles.input__text}
           placeholder='Введите значение'
           disabled={disabled}
-          // required={required}
           {...otherProps}
         />
         {iconElement}
@@ -84,6 +87,6 @@ const Input: React.FC<IProps> = (props) => {
       {helperTextElement}
     </div>
   );
-};
+});
 
 export default memo(Input);

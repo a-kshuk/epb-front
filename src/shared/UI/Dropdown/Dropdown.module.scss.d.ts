@@ -2,9 +2,7 @@ declare namespace DropdownModuleScssNamespace {
   export interface IDropdownModuleScss {
     arrow: string;
     arrow__down: string;
-    context_menu: string;
-    dropdown: string;
-    selector: string;
+    select: string;
   }
 }
 

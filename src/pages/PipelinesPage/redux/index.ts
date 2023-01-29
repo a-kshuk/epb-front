@@ -17,13 +17,3 @@ export type {
   IMaterialMechanicalProps,
   IWorkMode,
 } from './PipelineMainOptionsSlice';
-
-export { default as pipelineElementsSlice } from './pipelineElementsSlice';
-
-export {
-  addElement,
-  removeElement,
-  moveDownElement,
-  moveUpElement,
-  changeTypeElement,
-} from './pipelineElementsSlice';

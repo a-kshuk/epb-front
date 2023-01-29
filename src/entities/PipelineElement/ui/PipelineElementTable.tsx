@@ -2,6 +2,7 @@ import React, { memo, useMemo } from 'react';
 import { Button, ButtonIcon, Dropdown, Table } from 'shared/ui';
 import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import { ELEMENT_LABEL } from '../constants';
+import { IPileType } from '../../types';
 
 import {
   addElement,
@@ -47,13 +48,13 @@ const PipelineElementTable: React.FC = () => {
       number: element.position,
       typePipeline: (
         <Dropdown
-          items={ELEMENT_LABEL}
-          selectedKey={element.type}
-          onChange={(type) =>
+          options={ELEMENT_LABEL}
+          value={element.type}
+          onChange={(e) =>
             dispatch(
               changeTypeElement({
                 position: element.position,
-                type: type,
+                type: e.target.value as IPileType,
               })
             )
           }
@@ -86,7 +87,7 @@ const PipelineElementTable: React.FC = () => {
   if (!elements.length) {
     return (
       <Button
-        onClick={() => dispatch(addElement({ position: 1, type: 'bend' }))}
+        onClick={() => dispatch(addElement({ position: 1, type: 'straight' }))}
       >
         Добавить элемент трубопровода
       </Button>

@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   authorization: authorizationSlice,
   pipelineMainOptions: pipelineMainOptionsSlice.reducer,
   pipelineElements: pipelineElementsSlice.reducer,
-  straightPipelines: straightPipeSlice.reducer,
+  straightPipe: straightPipeSlice.reducer,
 });
 
 export type RootReducer = ReturnType<typeof rootReducer>;

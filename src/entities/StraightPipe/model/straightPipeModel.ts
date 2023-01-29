@@ -4,61 +4,53 @@ import { useSelector } from 'react-redux';
 export interface IStraightPipe {
   idElement: number;
   idMaterial?: number;
-  ovality: number;
+  diameter?: number;
 }
 
 export interface IStraightPipeState {
-  currentId: number;
+  // currentId: number;
   pipes: IStraightPipe[];
 }
 
 const initialState: IStraightPipeState = {
-  currentId: 0,
+  // currentId: 0,
   pipes: [],
 };
 
 const straightPipelineModel = createSlice({
-  name: 'straightPipeline',
+  name: 'straightPipe',
   initialState,
   reducers: {
-    addStraightPipeline: (state, action: PayloadAction<IStraightPipe>) => {
-      const pipeline = action.payload;
-      state.pipes = [...state.pipes, pipeline];
-    },
-
-    removeStraightPipeline: (state, action: PayloadAction<number>) => {
-      const idElement = action.payload;
-      const pipelines = state.pipes.filter(
-        (pipeline) => pipeline.idElement !== idElement
-      );
-      state.pipes = pipelines;
-    },
-
-    editStraightPipeline: (state, action: PayloadAction<IStraightPipe>) => {
-      const straightPipeline = action.payload;
-      state.pipes = state.pipes.map((pipeline) => {
-        return pipeline.idElement === straightPipeline.idElement
-          ? straightPipeline
-          : pipeline;
-      });
+    setPipes: (state, action: PayloadAction<IStraightPipe[]>) => {
+      const pipes = action.payload;
+      state.pipes = [...pipes];
     },
   },
 });
 
-export const useListStraightPipeline = () =>
+export interface IPipePosition extends IStraightPipe {
+  position: number;
+}
+
+export const useStraightPipeList = (): IPipePosition[] =>
   useSelector(
     createSelector(
       (state: RootState) => state.pipelineElements.elements,
-      (state: RootState) => state.straightPipelines.pipes,
+      (state: RootState) => state.straightPipe.pipes,
       (
         elements: RootState['pipelineElements']['elements'],
-        pipes: RootState['straightPipelines']['pipes']
+        pipes: RootState['straightPipe']['pipes']
       ) =>
         elements
           .filter((element) => element.type === 'straight')
           .sort((a, b) => a.position - b.position)
-          .map(({ id }) => pipes.find(({ idElement }) => idElement === id))
+          .map(({ id, position }) => {
+            const pipe = pipes.find(({ idElement }) => idElement === id);
+            return { ...pipe, idElement: id, position };
+          })
     )
   );
+
+export const { setPipes } = straightPipelineModel.actions;
 
 export default straightPipelineModel;

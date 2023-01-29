@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { PipelineElementTable } from 'entities/PipelineElement';
-import ThicknessPoint from './ThicknessPoint/ThicknessPoint';
+import { StraightPipeTable } from 'entities/straightPipe';
 
 const Thickness: React.FC = () => {
   return (
@@ -13,8 +13,7 @@ const Thickness: React.FC = () => {
       }}
     >
       <PipelineElementTable />
-      {/* <ThicknessPoint /> */}
-      {/* <Table titles={THICKNESS_TITLES} rows={MOCK}></Table> */}
+      <StraightPipeTable />
     </div>
   );
 };
