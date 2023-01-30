@@ -51,15 +51,17 @@ const StraightPipeModal: React.FC<IProps> = (props) => {
       onClose={onClose}
       title={`Редактирование прямого участка №${pipe?.position}`}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className={'gap20px'}>
         <Dropdown options={materials} {...register('idMaterial')} />
         <Input
           label='Диаметр'
           {...register('diameter')}
           onChange={() => null}
         />
-        <Button type='submit'>Сохранить</Button>
-        <Button onClick={onClose}>Закрыть</Button>
+        <div className={'container__btn'}>
+          <Button type='submit'>Сохранить</Button>
+          <Button onClick={onClose}>Закрыть</Button>
+        </div>
       </form>
     </Modal>
   );

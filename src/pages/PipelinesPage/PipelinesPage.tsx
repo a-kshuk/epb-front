@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Button, TabBar } from 'shared/ui';
+import { PipelineSections } from 'features/pipelineSections';
+import { PipelineMainOptions } from 'features/pipelineMainOptions';
+
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
 import { IItem } from '../../components/FileManager/Item/Item';
-import { MainOptions, Thickness } from './components';
+import { MainOptions } from './components';
 
 import './PipelinesPage.scss';
 
@@ -57,7 +60,8 @@ const PipelinesPage = () => {
         rightElement={<Button>Сохранить</Button>}
       >
         {tab === TABS[0] ? <MainOptions /> : null}
-        {tab === TABS[1] ? <Thickness /> : null}
+        {tab === TABS[1] ? <PipelineSections /> : null}
+        {tab === TABS[2] ? <PipelineMainOptions /> : null}
       </TabBar>
     </FileManager>
   );

@@ -51,7 +51,7 @@ const StraightPipeTable: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className='gap5px'>
       Прямой участок
       <Table titles={HEADER_TABLE} rows={rows} />
       <StraightPipeModal

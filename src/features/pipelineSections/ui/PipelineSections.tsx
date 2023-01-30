@@ -1,17 +1,10 @@
 import React, { memo } from 'react';
-import { PipelineElementTable } from 'entities/PipelineElement';
+import { PipelineElementTable } from 'entities/pipelineElement';
 import { StraightPipeTable } from 'entities/straightPipe';
 
 const Thickness: React.FC = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-      }}
-    >
+    <div className='gap20px'>
       <PipelineElementTable />
       <StraightPipeTable />
     </div>

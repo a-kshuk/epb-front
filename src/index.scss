@@ -1,5 +1,6 @@
 @use 'sass:map';
 @import '/src/theme/colors.scss';
+@import '/src/theme/mixins.scss';
 @import './theme/fonts.scss';
 
 // Обнуление стилей
@@ -131,4 +132,27 @@ h5 {
 }
 small {
   @include P2;
+}
+
+.gap5px {
+  @include autoLayout;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.gap20px {
+  @include autoLayout;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0px;
+}
+
+.container__btn {
+  @include autoLayout;
+  justify-content: space-around;
+  padding-top: 10px;
+  gap: 10px;
+  width: 100%;
 }

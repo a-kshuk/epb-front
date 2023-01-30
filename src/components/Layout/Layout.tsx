@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAppSelector } from 'shared/hooks';
 import styles from './Layout.module.scss';

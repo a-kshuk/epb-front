@@ -3,8 +3,9 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "allowJs": true,
-    "jsx": "react-jsx",
-    "module": "esnext",
+    "jsx": "react",
+    "module": "ESNext",
+    "noImplicitAny": true,
     "outDir": "./dist",
     "target": "es5",
     "lib": [
@@ -26,6 +27,7 @@
     "paths": {
       "shared/*": ["src/shared/*"],
       "entities/*": ["src/entities/*"],
+      "features/*": ["src/features/*"],
     },
     "downlevelIteration": true,
     "skipLibCheck": true
@@ -36,5 +38,10 @@
   ],
   "exclude": [
     "node_modules",
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }

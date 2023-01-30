@@ -17,7 +17,12 @@ import rootReducer, { RootReducer } from './rootReducer';
 const persistConfig: PersistConfig<RootReducer> = {
   key: 'root',
   storage,
-  whitelist: ['pipelineMainOptions', 'pipelineElements', 'straightPipe'],
+  whitelist: [
+    'pipelineWorkMode',
+    'pipelineMainOptions',
+    'pipelineElements',
+    'straightPipe',
+  ],
 };
 
 const persistedReducer = persistReducer<RootReducer>(
