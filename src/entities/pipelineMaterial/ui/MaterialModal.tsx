@@ -2,9 +2,7 @@ import React, { memo, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Input, Modal } from 'shared/ui';
 import { useAppDispatch } from 'shared/hooks';
-import { addMaterial, editMaterial, IMaterial } from '../../../redux';
-
-import styles from '../MainOptions.modules.scss';
+import { addMaterial, changeMaterial, IMaterial } from '../model';
 
 type IFormInput = Omit<IMaterial, 'id'>;
 
@@ -35,7 +33,7 @@ const MaterialModal: React.FC<IProps> = (props) => {
 
   const onSubmit: SubmitHandler<IFormInput> = ({ title }) => {
     material
-      ? dispatch(editMaterial({ id: material.id, title }))
+      ? dispatch(changeMaterial({ id: material.id, title }))
       : dispatch(addMaterial(title));
     setIsVisible(false);
   };
@@ -52,7 +50,7 @@ const MaterialModal: React.FC<IProps> = (props) => {
       isVisible={isVisible}
       onClose={setIsVisible}
     >
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.container}>
+      <form onSubmit={handleSubmit(onSubmit)} className={'gap20px'}>
         <Controller
           name='title'
           control={control}
@@ -66,7 +64,7 @@ const MaterialModal: React.FC<IProps> = (props) => {
             />
           )}
         />
-        <div className={styles.container__button}>
+        <div className={'container__btn'}>
           <Button type='submit'>Сохранить</Button>
           <Button onClick={() => setIsVisible(false)}>Закрыть</Button>
         </div>

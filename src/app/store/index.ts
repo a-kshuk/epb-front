@@ -19,8 +19,10 @@ const persistConfig: PersistConfig<RootReducer> = {
   storage,
   whitelist: [
     'pipelineWorkMode',
-    'pipelineMainOptions',
+    'pipelineMainInfo',
     'pipelineElements',
+    'pipelineMaterial',
+    'pipelineMaterialProps',
     'straightPipe',
   ],
 };

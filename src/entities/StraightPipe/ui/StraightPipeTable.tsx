@@ -16,9 +16,7 @@ const StraightPipeTable: React.FC = () => {
   const [straightPipe, setStraightPipe] = useState<IPipePosition | undefined>();
   const pipes = useStraightPipeList();
 
-  const materials = useAppSelector(
-    (state) => state.pipelineMainOptions.materials
-  );
+  const materials = useAppSelector((state) => state.pipelineMaterial.materials);
 
   const rows = useMemo(() => {
     if (!materials.length) {

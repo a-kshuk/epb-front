@@ -6,7 +6,6 @@ import { PipelineMainOptions } from 'features/pipelineMainOptions';
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
 import { IItem } from '../../components/FileManager/Item/Item';
-import { MainOptions } from './components';
 
 import './PipelinesPage.scss';
 
@@ -59,9 +58,9 @@ const PipelinesPage = () => {
         onChangeTab={setTab}
         rightElement={<Button>Сохранить</Button>}
       >
-        {tab === TABS[0] ? <MainOptions /> : null}
+        {tab === TABS[0] ? <PipelineMainOptions /> : null}
         {tab === TABS[1] ? <PipelineSections /> : null}
-        {tab === TABS[2] ? <PipelineMainOptions /> : null}
+        {/* {tab === TABS[2] ? <PipelineMainOptions /> : null} */}
       </TabBar>
     </FileManager>
   );

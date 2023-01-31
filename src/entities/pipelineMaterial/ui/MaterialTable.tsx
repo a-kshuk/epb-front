@@ -1,10 +1,8 @@
 import React, { memo, useMemo, useState } from 'react';
 import { Button, ButtonIcon, Table } from 'shared/ui';
 import { useAppDispatch, useAppSelector } from 'shared/hooks';
-import MaterialModal from '../MaterialModal/MaterialModal';
-import { IMaterial, removeMaterial } from '../../../redux';
-
-import styles from '../MainOptions.modules.scss';
+import MaterialModal from './MaterialModal';
+import { IMaterial, removeMaterial } from '../model';
 
 interface IMaterialTable extends Omit<IMaterial, 'id'> {
   title: string;
@@ -22,7 +20,7 @@ const MaterialTable: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [material, setMaterial] = useState<IMaterial | undefined>();
   const dispatch = useAppDispatch();
-  const { materials } = useAppSelector((state) => state.pipelineMainOptions);
+  const { materials } = useAppSelector((state) => state.pipelineMaterial);
 
   const materialTables = useMemo(
     () =>
@@ -58,7 +56,7 @@ const MaterialTable: React.FC = () => {
   );
 
   return (
-    <div className={styles.container__table}>
+    <div className={'gap5px'}>
       {tableElement}
       <Button
         onClick={() => {

@@ -6,7 +6,7 @@ import { setTitle, setRegNumber, setLocation } from '../model';
 const MainOptions: React.FC = () => {
   const dispatch = useAppDispatch();
   const { title, regNumber, location } = useAppSelector(
-    (state) => state.pipelineMainOptions
+    (state) => state.pipelineMainInfo
   );
 
   return (

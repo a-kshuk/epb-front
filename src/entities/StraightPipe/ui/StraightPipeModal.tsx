@@ -18,7 +18,7 @@ const StraightPipeModal: React.FC<IProps> = (props) => {
   const { register, handleSubmit } = useForm<IFormInput>({ mode: 'onChange' });
 
   const materials = useAppSelector((state) =>
-    state.pipelineMainOptions.materials.map(({ id, title }) => ({
+    state.pipelineMaterial.materials.map(({ id, title }) => ({
       value: id,
       label: title,
     }))
