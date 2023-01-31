@@ -1,9 +1,9 @@
-export { default as pipelineMaterialSlice } from './pipelineMaterialModal';
+export { default as pipelineMaterialSlice } from './pipelineMaterialModel';
 
 export {
   addMaterial,
   removeMaterial,
   changeMaterial,
-} from './pipelineMaterialModal';
+} from './pipelineMaterialModel';
 
-export type { IMaterial } from './pipelineMaterialModal';
+export type { IMaterial } from './pipelineMaterialModel';

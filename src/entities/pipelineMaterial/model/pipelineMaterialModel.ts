@@ -15,7 +15,7 @@ const initialState: IPipelineMaterialState = {
   materials: [],
 };
 
-export const pipelineMaterialModal = createSlice({
+export const pipelineMaterialModel = createSlice({
   name: 'pipelineMaterial',
   initialState,
   reducers: {
@@ -23,10 +23,11 @@ export const pipelineMaterialModal = createSlice({
       const id = state.currentId + 1;
       const title = action.payload;
       state.materials = [...state.materials, { id, title }];
+      state.currentId = id;
     },
     removeMaterial: (state, action: PayloadAction<number>) => {
       state.materials = state.materials.filter(
-        ({ id }) => id === action.payload
+        ({ id }) => id !== action.payload
       );
     },
     changeMaterial: (state, action: PayloadAction<IMaterial>) => {
@@ -39,6 +40,6 @@ export const pipelineMaterialModal = createSlice({
 });
 
 export const { addMaterial, removeMaterial, changeMaterial } =
-  pipelineMaterialModal.actions;
+  pipelineMaterialModel.actions;
 
-export default pipelineMaterialModal;
+export default pipelineMaterialModel;
