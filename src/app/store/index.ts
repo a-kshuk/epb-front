@@ -24,6 +24,7 @@ const persistConfig: PersistConfig<RootReducer> = {
     'pipelineMaterial',
     'pipelineMaterialProps',
     'straightPipe',
+    'pipelineThickness',
   ],
 };
 

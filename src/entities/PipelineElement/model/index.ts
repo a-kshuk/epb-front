@@ -7,3 +7,5 @@ export {
   moveUpElement,
   changeTypeElement,
 } from './pipelineElementsModel';
+
+export type { IPipelineElement } from './pipelineElementsModel';

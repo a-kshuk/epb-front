@@ -95,17 +95,8 @@ const PipelineElementTable: React.FC = () => {
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-      }}
-    >
-      <div>
-        <Table titles={THICKNESS_TITLES} rows={list} />
-      </div>
+    <div className='gap5px'>
+      <Table titles={THICKNESS_TITLES} rows={list} />
     </div>
   );
 };

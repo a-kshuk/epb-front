@@ -4,6 +4,7 @@ import { straightPipeSlice } from 'entities/straightPipe';
 import { pipelineElementsSlice } from 'entities/pipelineElement';
 import { pipelineMaterialSlice } from 'entities/pipelineMaterial';
 import { pipelineMainInfoSlice } from 'entities/pipelineMainInfo';
+import { pipelineThicknessSlice } from 'entities/pipelineThickness';
 import { pipelineMaterialPropsSlice } from 'entities/pipelineMaterialProps';
 
 import authorizationSlice from '../../features/authorization/authorizationSlice';
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   pipelineMaterial: pipelineMaterialSlice.reducer,
   pipelineMaterialProps: pipelineMaterialPropsSlice.reducer,
   straightPipe: straightPipeSlice.reducer,
+  pipelineThickness: pipelineThicknessSlice.reducer,
 });
 
 export type RootReducer = ReturnType<typeof rootReducer>;

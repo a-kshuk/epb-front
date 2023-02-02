@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, TabBar } from 'shared/ui';
 import { PipelineSections } from 'features/pipelineSections';
 import { PipelineMainOptions } from 'features/pipelineMainOptions';
+import { PipelineThickness } from 'features/pipelineThickness';
 
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
@@ -48,7 +49,7 @@ const foldersMock: IFolder[] = [
 const TABS = ['Основные параметры', 'Участки трубопровода', 'Толщинометрия'];
 
 const PipelinesPage = () => {
-  const [tab, setTab] = useState(TABS[1]);
+  const [tab, setTab] = useState(TABS[2]);
 
   return (
     <FileManager items={itemsMock} folders={foldersMock}>
@@ -60,7 +61,7 @@ const PipelinesPage = () => {
       >
         {tab === TABS[0] ? <PipelineMainOptions /> : null}
         {tab === TABS[1] ? <PipelineSections /> : null}
-        {/* {tab === TABS[2] ? <PipelineMainOptions /> : null} */}
+        {tab === TABS[2] ? <PipelineThickness /> : null}
       </TabBar>
     </FileManager>
   );
