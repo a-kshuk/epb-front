@@ -12,8 +12,14 @@ export interface IBuildPaths {
   features: string;
 }
 
+export interface IBuildEnv {
+  mode: IBuildMode;
+  port: number;
+}
+
 export interface IBuildOptions {
   mode: IBuildMode;
   paths: IBuildPaths;
   isDev: boolean;
+  port: number;
 }

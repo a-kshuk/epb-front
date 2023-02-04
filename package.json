@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open",
-    "build": "webpack",
+    "start": "webpack serve --env port=3000",
+    "build:prod": "webpack --env mode=production",
+    "build:dev": "webpack --env mode=development",
     "ts": "tsc -p tsconfig.json --noEmit"
   },
   "author": "Andrey Kshukin",
