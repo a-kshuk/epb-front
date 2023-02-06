@@ -1,25 +1,25 @@
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 import { IBuildOptions } from './types/config';
 
-export const buildLoaders = ({
-  paths,
-}: IBuildOptions): webpack.RuleSetRule[] => {
-  const styleLoader = {
+export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
+  const { paths, isDev } = options;
+  const cssLoader = {
     test: /\.s?css$/,
     exclude: paths.nodeModules,
     use: [
-      {
-        loader: 'style-loader',
-      },
-      '@teamsupercell/typings-for-css-modules-loader',
+      isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+      // '@teamsupercell/typings-for-css-modules-loader',
       {
         loader: 'css-loader',
-        // options: {
-        //   modules: {
-        //     mode: 'local',
-        //     localIdentName: '[name][local]--[hash:3]',
-        //   },
-        // },
+        options: {
+          modules: {
+            auto: (resPath: string) => Boolean(resPath.includes('.module.')),
+            localIdentName: isDev
+              ? '[path][name]__[local]--[hash:base64:5]'
+              : '[hash:base64:8]',
+          },
+        },
       },
       'sass-loader',
     ],
@@ -40,20 +40,6 @@ export const buildLoaders = ({
     use: ['csv-loader'],
   };
 
-  const babelLoader = {
-    test: /\.(js|mjs|jsx|ts|tsx)$/,
-    exclude: /node_modules/,
-    // include: path.resolve(__dirname, 'src'),
-    loader: 'babel-loader',
-    options: {
-      presets: [
-        '@babel/preset-env',
-        '@babel/preset-react',
-        '@babel/preset-typescript',
-      ],
-    },
-  };
-
   const tsLoader = {
     test: /\.tsx?$/,
     loader: 'ts-loader',
@@ -63,5 +49,5 @@ export const buildLoaders = ({
     // },
   };
 
-  return [styleLoader, imgLoader, fontLoader, scvLoader, babelLoader, tsLoader];
+  return [tsLoader, cssLoader, imgLoader, fontLoader, scvLoader];
 };

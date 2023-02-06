@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "allowJs": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "ESNext",
     "noImplicitAny": true,
     "outDir": "./dist",
@@ -35,13 +35,18 @@
   "include": [
     "./src/*",
     "./src/app/store/types.d.ts"
-  ],
+, "global.d.ts"  ],
   "exclude": [
     "node_modules",
   ],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   }
 }
