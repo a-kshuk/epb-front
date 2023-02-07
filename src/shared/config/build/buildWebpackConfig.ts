@@ -11,35 +11,16 @@ export const buildWebpackConfig = (
   const { paths, mode, isDev } = options;
   return {
     mode,
-    entry: {
-      index: paths.entry,
-    },
+    entry: paths.entry,
     devtool: isDev ? 'inline-source-map' : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
     plugins: buildPlugins(options),
     output: {
       filename: '[name].[contenthash].js',
       path: paths.build,
-      publicPath: paths.publicPath,
+      // publicPath: paths.publicPath,
       clean: true,
     },
-    // TODO: Доработать оптимизацию
-    optimization: {
-      // moduleIds: 'deterministic',
-      // runtimeChunk: 'single',
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-        },
-      },
-    },
-    // TODO: добавить кэширование
-    // cache: {
-    // },
     module: {
       rules: buildLoaders(options),
     },

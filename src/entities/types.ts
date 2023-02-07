@@ -1,1 +1,1 @@
-export type IPileType = 'straight' /* | 'bend'*/;
+export type IPileType = 'straight' | 'bend';

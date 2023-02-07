@@ -1,9 +1,9 @@
 import React, { memo, useMemo, useState } from 'react';
 import { useAppSelector } from 'shared/hooks';
 import { ButtonIcon, Table } from 'shared/ui';
-import { IPipePosition, useStraightPipeList } from '../model/straightPipeModel';
+import { IPipePosition, useBendPipeList } from '../model/bendPipeModel';
 
-import StraightPipeModal from './StraightPipeModal';
+import BendPipeModal from './BendPipeModal';
 
 const HEADER_TABLE = {
   position: '№ элемента',
@@ -15,7 +15,7 @@ const HEADER_TABLE = {
 
 const StraightPipeTable: React.FC = () => {
   const [straightPipe, setStraightPipe] = useState<IPipePosition | undefined>();
-  const pipes = useStraightPipeList();
+  const pipes = useBendPipeList();
 
   const materials = useAppSelector((state) => state.pipelineMaterial.materials);
 
@@ -52,9 +52,9 @@ const StraightPipeTable: React.FC = () => {
 
   return (
     <div className='gap5px'>
-      Прямой участок
+      Отвод
       <Table titles={HEADER_TABLE} rows={rows} />
-      <StraightPipeModal
+      <BendPipeModal
         pipe={straightPipe}
         onClose={() => setStraightPipe(undefined)}
       />

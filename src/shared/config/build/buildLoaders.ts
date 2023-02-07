@@ -3,13 +3,13 @@ import webpack from 'webpack';
 import { IBuildOptions } from './types/config';
 
 export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
-  const { paths, isDev } = options;
+  const { isDev } = options;
   const cssLoader = {
     test: /\.s?css$/,
-    exclude: paths.nodeModules,
+    // exclude: paths.nodeModules,
     use: [
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-      // '@teamsupercell/typings-for-css-modules-loader',
+      '@teamsupercell/typings-for-css-modules-loader',
       {
         loader: 'css-loader',
         options: {
@@ -44,9 +44,6 @@ export const buildLoaders = (options: IBuildOptions): webpack.RuleSetRule[] => {
     test: /\.tsx?$/,
     loader: 'ts-loader',
     exclude: '/node_modules/',
-    // options: {
-    //   allowTsInNodeModules: true,
-    // },
   };
 
   return [tsLoader, cssLoader, imgLoader, fontLoader, scvLoader];

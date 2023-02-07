@@ -1,6 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { workModeSlice } from 'entities/pipelineWorkMode';
 import { straightPipeSlice } from 'entities/straightPipe';
+import { bendPipeSlice } from 'entities/bendPipe';
 import { pipelineElementsSlice } from 'entities/pipelineElement';
 import { pipelineMaterialSlice } from 'entities/pipelineMaterial';
 import { pipelineMainInfoSlice } from 'entities/pipelineMainInfo';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   pipelineMaterial: pipelineMaterialSlice.reducer,
   pipelineMaterialProps: pipelineMaterialPropsSlice.reducer,
   straightPipe: straightPipeSlice.reducer,
+  bendPipe: bendPipeSlice.reducer,
   pipelineThickness: pipelineThicknessSlice.reducer,
 });
 

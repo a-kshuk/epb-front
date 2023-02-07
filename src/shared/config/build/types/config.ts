@@ -4,9 +4,9 @@ export interface IBuildPaths {
   entry: string;
   build: string;
   html: string;
-  devServer: string;
-  publicPath: string;
-  nodeModules: string;
+  // devServer: string;
+  // publicPath: string;
+  // nodeModules: string;
   shared: string;
   entities: string;
   features: string;

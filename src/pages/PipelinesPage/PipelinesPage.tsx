@@ -49,7 +49,7 @@ const foldersMock: IFolder[] = [
 const TABS = ['Основные параметры', 'Участки трубопровода', 'Толщинометрия'];
 
 const PipelinesPage = () => {
-  const [tab, setTab] = useState(TABS[2]);
+  const [tab, setTab] = useState(TABS[1]);
 
   return (
     <FileManager items={itemsMock} folders={foldersMock}>

@@ -113,7 +113,7 @@ const pipelineElementsModel = createSlice({
     changeThickness: (state, action: PayloadAction<IThickness>) => {
       const thickness = action.payload;
       state.thicknessList = state.thicknessList.map((el) =>
-        el.idElement === thickness.idElement ? thickness : el
+        el.id === thickness.id ? thickness : el
       );
     },
   },

@@ -3,16 +3,16 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import { Button, Dropdown, Input, Modal } from 'shared/ui';
 
-import { IStraightPipe, useStraightPipeList, setPipes } from '../model';
+import { IBendPipe, useStraightPipeList, setBendPipes } from '../model';
 
-type IFormInput = Omit<IStraightPipe, 'idElement'>;
+type IFormInput = Omit<IBendPipe, 'idElement'>;
 
 interface IProps {
-  pipe?: IStraightPipe & { position: number };
+  pipe?: IBendPipe & { position: number };
   onClose: () => void;
 }
 
-const StraightPipeModal: React.FC<IProps> = (props) => {
+const BendPipeModal: React.FC<IProps> = (props) => {
   const { pipe, onClose } = props;
   const dispatch = useAppDispatch();
   const { register, handleSubmit, setValue } = useForm<IFormInput>({
@@ -50,7 +50,7 @@ const StraightPipeModal: React.FC<IProps> = (props) => {
         thickness: data.thickness ? +data.thickness : 0,
       };
     });
-    dispatch(setPipes(pipes));
+    dispatch(setBendPipes(pipes));
     onClose();
   };
 
@@ -81,4 +81,4 @@ const StraightPipeModal: React.FC<IProps> = (props) => {
   );
 };
 
-export default StraightPipeModal;
+export default BendPipeModal;

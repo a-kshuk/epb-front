@@ -2,8 +2,8 @@ import React, { memo, useMemo } from 'react';
 import { Button, ButtonIcon, Table } from 'shared/ui';
 import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import { IPipelineElement } from 'entities/pipelineElement';
-
 import { ELEMENT_LABEL } from '../constants';
+import PipelineThicknessInput from './PipelineThicknessInput';
 
 import {
   addThickness,
@@ -16,7 +16,7 @@ const THICKNESS_TITLES = {
   moveUp: ' ',
   moveDown: ' ',
   number: '№ п/п',
-  thickness: 'Толщина',
+  thickness: 'Измеренная толщина (мм)',
   remove: ' ',
   add: ' ',
 };
@@ -55,7 +55,7 @@ const PipelineElementTable: React.FC<IProps> = (props) => {
         />
       ),
       number: thickness.position,
-      thickness: thickness.thickness,
+      thickness: <PipelineThicknessInput {...thickness} />,
       remove: (
         <ButtonIcon
           imgScr='/images/minus-circle.svg'
