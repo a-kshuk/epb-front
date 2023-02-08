@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 export interface IBendPipe {
   idElement: number;
   idMaterial?: number;
-  diameter?: number;
+  externalDiameter?: number;
+  radius?: number;
   thickness?: number;
 }
 

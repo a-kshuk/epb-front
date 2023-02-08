@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import { Button, Dropdown, Input, Modal } from 'shared/ui';
 
-import { IBendPipe, useStraightPipeList, setBendPipes } from '../model';
+import { IBendPipe, useBendPipeList, setBendPipes } from '../model';
 
 type IFormInput = Omit<IBendPipe, 'idElement'>;
 
@@ -22,7 +22,7 @@ const BendPipeModal: React.FC<IProps> = (props) => {
   useEffect(() => {
     if (pipe) {
       console.log(pipe);
-      setValue('diameter', pipe.diameter);
+      setValue('externalDiameter', pipe.externalDiameter);
       setValue('thickness', pipe.thickness);
       setValue('idMaterial', pipe.idMaterial);
       return;
@@ -36,7 +36,7 @@ const BendPipeModal: React.FC<IProps> = (props) => {
     }))
   );
 
-  const pipeList = useStraightPipeList();
+  const pipeList = useBendPipeList();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     const pipes = pipeList.map((el) => {
@@ -46,7 +46,8 @@ const BendPipeModal: React.FC<IProps> = (props) => {
       return {
         idElement: el.idElement,
         idMaterial: data.idMaterial ? +data.idMaterial : undefined,
-        diameter: data.diameter ? +data.diameter : 0,
+        externalDiameter: data.externalDiameter ? +data.externalDiameter : 0,
+        radius: data.radius ? +data.radius : 0,
         thickness: data.thickness ? +data.thickness : 0,
       };
     });
@@ -63,13 +64,18 @@ const BendPipeModal: React.FC<IProps> = (props) => {
       <form onSubmit={handleSubmit(onSubmit)} className={'gap20px'}>
         <Dropdown options={materials} {...register('idMaterial')} />
         <Input
-          label='Диаметр (мм)'
-          {...register('diameter')}
+          label='Внешний диаметр (мм)'
+          {...register('externalDiameter')}
           onChange={() => null}
         />
         <Input
           label='Исполнительная толщина (мм)'
           {...register('thickness')}
+          onChange={() => null}
+        />
+        <Input
+          label='Радиус гиба (мм)'
+          {...register('radius')}
           onChange={() => null}
         />
         <div className={'container__btn'}>

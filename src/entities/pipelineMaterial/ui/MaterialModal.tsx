@@ -1,8 +1,9 @@
 import React, { memo, useEffect } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Input, Modal } from 'shared/ui';
+import { Button, Dropdown, Input, Modal } from 'shared/ui';
 import { useAppDispatch } from 'shared/hooks';
 import { addMaterial, changeMaterial, IMaterial } from '../model';
+import { STEEL_TYPE_TABLE } from '../constants';
 
 type IFormInput = Omit<IMaterial, 'id'>;
 
@@ -24,17 +25,14 @@ const MaterialModal: React.FC<IProps> = (props) => {
   } = useForm<IFormInput>({ mode: 'onChange' });
 
   useEffect(() => {
-    if (material) {
-      setValue('title', material.title);
-      return;
-    }
-    setValue('title', '');
+    setValue('title', material?.title || '');
+    setValue('steelType', material?.steelType || 'carbon');
   }, [material]);
 
-  const onSubmit: SubmitHandler<IFormInput> = ({ title }) => {
+  const onSubmit: SubmitHandler<IFormInput> = ({ title, steelType }) => {
     material
-      ? dispatch(changeMaterial({ id: material.id, title }))
-      : dispatch(addMaterial(title));
+      ? dispatch(changeMaterial({ id: material.id, title, steelType }))
+      : dispatch(addMaterial({ title, steelType }));
     setIsVisible(false);
   };
 
@@ -62,6 +60,14 @@ const MaterialModal: React.FC<IProps> = (props) => {
               required
               {...field}
             />
+          )}
+        />
+        <Controller
+          name='steelType'
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <Dropdown options={STEEL_TYPE_TABLE} {...field}></Dropdown>
           )}
         />
         <div className={'container__btn'}>

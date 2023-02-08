@@ -7,7 +7,7 @@ import StraightPipeModal from './StraightPipeModal';
 
 const HEADER_TABLE = {
   position: '№ элемента',
-  diameter: 'Диаметр (мм)',
+  externalDiameter: 'Внешний диаметр (мм)',
   thickness: 'Исполнительная толщина (мм)',
   material: 'Материал',
   edit: '',
@@ -27,7 +27,7 @@ const StraightPipeTable: React.FC = () => {
     return pipes.map((pipe) => ({
       idElement: pipe.idElement,
       position: pipe.position,
-      diameter: pipe.diameter || 0,
+      externalDiameter: pipe.externalDiameter || 0,
       material:
         materials.find(({ id }) => pipe?.idMaterial === id)?.title ||
         'Не выбран',

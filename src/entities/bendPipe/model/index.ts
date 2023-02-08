@@ -1,7 +1,7 @@
 export {
   default as bendPipeSlice,
   setBendPipes,
-  useBendPipeList as useStraightPipeList,
+  useBendPipeList,
 } from './bendPipeModel';
 
 export type { IBendPipe } from './bendPipeModel';

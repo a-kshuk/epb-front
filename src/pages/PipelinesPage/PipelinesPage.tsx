@@ -3,6 +3,7 @@ import { Button, TabBar } from 'shared/ui';
 import { PipelineSections } from 'features/pipelineSections';
 import { PipelineMainOptions } from 'features/pipelineMainOptions';
 import { PipelineThickness } from 'features/pipelineThickness';
+import { PipelineCalculation } from 'features/pipelineCalculation';
 
 import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
@@ -46,10 +47,15 @@ const foldersMock: IFolder[] = [
   { id: 2, title: 'Папка 2' },
 ];
 
-const TABS = ['Основные параметры', 'Участки трубопровода', 'Толщинометрия'];
+const TABS = [
+  'Основные параметры',
+  'Участки трубопровода',
+  'Толщинометрия',
+  'Расчет на прочность',
+];
 
 const PipelinesPage = () => {
-  const [tab, setTab] = useState(TABS[1]);
+  const [tab, setTab] = useState(TABS[3]);
 
   return (
     <FileManager items={itemsMock} folders={foldersMock}>
@@ -62,6 +68,7 @@ const PipelinesPage = () => {
         {tab === TABS[0] ? <PipelineMainOptions /> : null}
         {tab === TABS[1] ? <PipelineSections /> : null}
         {tab === TABS[2] ? <PipelineThickness /> : null}
+        {tab === TABS[3] ? <PipelineCalculation /> : null}
       </TabBar>
     </FileManager>
   );

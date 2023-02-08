@@ -3,15 +3,16 @@ import { Button, ButtonIcon, Table } from 'shared/ui';
 import { useAppDispatch, useAppSelector } from 'shared/hooks';
 import MaterialModal from './MaterialModal';
 import { IMaterial, removeMaterial } from '../model';
+import { STEEL_TYPE_LABEL } from '../constants';
 
 interface IMaterialTable extends Omit<IMaterial, 'id'> {
-  title: string;
   buttonEdit: string;
   buttonRemove: string;
 }
 
 const MATERIAL_TITLES: Record<keyof IMaterialTable, string> = {
   title: 'Название материала',
+  steelType: 'Тип стали',
   buttonEdit: ' ',
   buttonRemove: ' ',
 };
@@ -25,7 +26,8 @@ const MaterialTable: React.FC = () => {
   const materialTables = useMemo(
     () =>
       materials.map((item) => ({
-        ...item,
+        title: item.title,
+        steelType: STEEL_TYPE_LABEL[item.steelType],
         buttonEdit: (
           <ButtonIcon
             color='red'

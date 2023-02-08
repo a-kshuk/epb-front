@@ -7,7 +7,8 @@ import BendPipeModal from './BendPipeModal';
 
 const HEADER_TABLE = {
   position: '№ элемента',
-  diameter: 'Диаметр (мм)',
+  diameter: 'Внешний диаметр (мм)',
+  radius: 'Радиус гиба (мм)',
   thickness: 'Исполнительная толщина (мм)',
   material: 'Материал',
   edit: '',
@@ -27,7 +28,8 @@ const StraightPipeTable: React.FC = () => {
     return pipes.map((pipe) => ({
       idElement: pipe.idElement,
       position: pipe.position,
-      diameter: pipe.diameter || 0,
+      diameter: pipe.externalDiameter || 0,
+      radius: pipe.radius || 0,
       material:
         materials.find(({ id }) => pipe?.idMaterial === id)?.title ||
         'Не выбран',

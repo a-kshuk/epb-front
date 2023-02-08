@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 export interface IStraightPipe {
   idElement: number;
   idMaterial?: number;
-  diameter?: number;
+  externalDiameter?: number;
   thickness?: number;
 }
 

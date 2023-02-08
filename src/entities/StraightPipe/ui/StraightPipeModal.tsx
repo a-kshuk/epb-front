@@ -22,7 +22,7 @@ const StraightPipeModal: React.FC<IProps> = (props) => {
   useEffect(() => {
     if (pipe) {
       console.log(pipe);
-      setValue('diameter', pipe.diameter);
+      setValue('externalDiameter', pipe.externalDiameter);
       setValue('thickness', pipe.thickness);
       setValue('idMaterial', pipe.idMaterial);
       return;
@@ -46,7 +46,7 @@ const StraightPipeModal: React.FC<IProps> = (props) => {
       return {
         idElement: el.idElement,
         idMaterial: data.idMaterial ? +data.idMaterial : undefined,
-        diameter: data.diameter ? +data.diameter : 0,
+        externalDiameter: data.externalDiameter ? +data.externalDiameter : 0,
         thickness: data.thickness ? +data.thickness : 0,
       };
     });
@@ -63,8 +63,8 @@ const StraightPipeModal: React.FC<IProps> = (props) => {
       <form onSubmit={handleSubmit(onSubmit)} className={'gap20px'}>
         <Dropdown options={materials} {...register('idMaterial')} />
         <Input
-          label='Диаметр (мм)'
-          {...register('diameter')}
+          label='Внешний диаметр (мм)'
+          {...register('externalDiameter')}
           onChange={() => null}
         />
         <Input
