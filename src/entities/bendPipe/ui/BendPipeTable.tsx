@@ -1,7 +1,7 @@
 import React, { memo, useMemo, useState } from 'react';
 import { useAppSelector } from 'shared/hooks';
 import { ButtonIcon, Table } from 'shared/ui';
-import { IPipePosition, useBendPipeList } from '../model/bendPipeModel';
+import { IBendPipePosition, useBendPipeList } from '../model/bendPipeModel';
 
 import BendPipeModal from './BendPipeModal';
 
@@ -15,7 +15,9 @@ const HEADER_TABLE = {
 };
 
 const StraightPipeTable: React.FC = () => {
-  const [straightPipe, setStraightPipe] = useState<IPipePosition | undefined>();
+  const [straightPipe, setStraightPipe] = useState<
+    IBendPipePosition | undefined
+  >();
   const pipes = useBendPipeList();
 
   const materials = useAppSelector((state) => state.pipelineMaterial.materials);

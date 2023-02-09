@@ -1,11 +1,11 @@
+import React, { memo } from 'react';
 import { IMaterialProps } from 'entities/pipelineMaterialProps';
 import { useStraightPipeList } from 'entities/straightPipe';
 import { useAppSelector } from 'shared/hooks';
 import CalculationStraightPipeTable from './CalculationStraightPipeTable';
 import { IStraightPipeTable } from '../types';
-import { memo } from 'react';
 
-const CalculationStraightPipe = () => {
+const CalculationStraightPipe: React.FC = () => {
   const pipeList = useStraightPipeList();
   const modeList = useAppSelector((state) => state.pipelineWorkMode.modes);
   const materials = useAppSelector(

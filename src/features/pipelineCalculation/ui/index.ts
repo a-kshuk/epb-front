@@ -1,1 +1,1 @@
-export { default as PipelineCalculation } from './CalculationStraightPipe';
+export { default as PipelineCalculation } from './CalculationPipeline';

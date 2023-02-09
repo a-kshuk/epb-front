@@ -30,11 +30,11 @@ const straightPipelineModel = createSlice({
   },
 });
 
-export interface IPipePosition extends IBendPipe {
+export interface IBendPipePosition extends IBendPipe {
   position: number;
 }
 
-export const useBendPipeList = (): IPipePosition[] =>
+export const useBendPipeList = (): IBendPipePosition[] =>
   useSelector(
     createSelector(
       (state: RootState) => state.pipelineElements.elements,
