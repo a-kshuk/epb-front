@@ -12,12 +12,10 @@ export default (env: IBuildEnv) => {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     build: path.resolve(__dirname, 'build'),
     html: path.resolve(__dirname, 'public', 'index.html'),
+    src: path.relative(__dirname, 'src'),
     // devServer: path.resolve(__dirname, 'public'),
     // publicPath: path.resolve(__dirname, '/'),
     // nodeModules: path.resolve(__dirname, './node_modules'),
-    shared: path.resolve(__dirname, 'src', 'shared'),
-    entities: path.resolve(__dirname, 'src', 'entities'),
-    features: path.resolve(__dirname, 'src', 'features'),
   };
 
   const mode = env.mode || 'development';

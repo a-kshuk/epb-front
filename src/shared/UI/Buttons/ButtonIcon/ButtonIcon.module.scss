@@ -1,6 +1,6 @@
 @use 'sass:map';
-@import '/src/theme/colors.scss';
-@import '/src/theme/mixins.scss';
+@import '/src/app/styles/variables/colors.scss';
+@import '/src/app/styles/variables/mixins.scss';
 
 .button {
   background-color: map.get($purple, 5);

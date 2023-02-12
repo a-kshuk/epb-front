@@ -22,20 +22,22 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "baseUrl": ".",
     "useDefineForClassFields": true,
+    "baseUrl": ".",
     "paths": {
-      "shared/*": ["src/shared/*"],
-      "entities/*": ["src/entities/*"],
-      "features/*": ["src/features/*"],
+      "*": ["./src/*"] 
+      // "shared/*": ["src/shared/*"],
+      // "entities/*": ["src/entities/*"],
+      // "features/*": ["src/features/*"],
     },
     "downlevelIteration": true,
     "skipLibCheck": true
   },
-  "include": [
-    "./src/*",
-    "./src/app/store/types.d.ts"
-, "global.d.ts"  ],
+  // "include": [
+  //   "./src/*",
+  //   "./src/app/store/types.d.ts", 
+  //   "global.d.ts"  
+  // ],
   "exclude": [
     "node_modules",
   ],

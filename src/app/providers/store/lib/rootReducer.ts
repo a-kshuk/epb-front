@@ -8,7 +8,7 @@ import { pipelineMainInfoSlice } from 'entities/pipelineMainInfo';
 import { pipelineThicknessSlice } from 'entities/pipelineThickness';
 import { pipelineMaterialPropsSlice } from 'entities/pipelineMaterialProps';
 
-import authorizationSlice from '../../features/authorization/authorizationSlice';
+import authorizationSlice from 'features/authorization/authorizationSlice';
 
 const rootReducer = combineReducers({
   authorization: authorizationSlice,

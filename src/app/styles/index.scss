@@ -1,0 +1,62 @@
+@use 'sass:map';
+@import './reset.scss';
+
+@import './variables/colors.scss';
+@import './variables/constants.scss';
+@import './variables/fonts.scss';
+@import './variables/mixins.scss';
+@import './variables/paths.scss';
+@import './variables/shadows.scss';
+
+// дефолтные настройки
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @include P3;
+  color: map.get($gray, 4);
+}
+
+h1 {
+  @include H1;
+}
+h2 {
+  @include H2;
+}
+h3 {
+  @include H3;
+}
+h4 {
+  @include H4;
+}
+h5 {
+  @include H5;
+}
+small {
+  @include P2;
+}
+
+.gap5px {
+  @include autoLayout;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.gap20px {
+  @include autoLayout;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0px;
+}
+
+.container__btn {
+  @include autoLayout;
+  justify-content: space-around;
+  padding-top: 10px;
+  gap: 10px;
+  width: 100%;
+}

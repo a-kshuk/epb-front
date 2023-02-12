@@ -9,8 +9,6 @@ import FileManager from '../../components/FileManager/FileManager';
 import { IFolder } from '../../components/FileManager/Folder/Folder';
 import { IItem } from '../../components/FileManager/Item/Item';
 
-import './PipelinesPage.scss';
-
 const itemsMock: IItem[] = [
   { id: 1, title: 'Трубопровод 1', onPress: () => alert('click on 1') },
   { id: 2, title: 'Трубопровод 2', onPress: () => alert('click on 2') },

@@ -4,12 +4,10 @@ export interface IBuildPaths {
   entry: string;
   build: string;
   html: string;
+  src: string;
   // devServer: string;
   // publicPath: string;
   // nodeModules: string;
-  shared: string;
-  entities: string;
-  features: string;
 }
 
 export interface IBuildEnv {

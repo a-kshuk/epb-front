@@ -1,7 +1,7 @@
 @use 'sass:map';
-@import '/src/theme/colors.scss';
-@import '/src/theme/fonts.scss';
-@import '/src/theme/mixins.scss';
+@import '/src/app/styles/variables/colors.scss';
+@import '/src/app/styles/variables/fonts.scss';
+@import '/src/app/styles/variables/mixins.scss';
 
 @mixin borderTable {
   border: 1px solid map.get($gray, 4);

@@ -1,8 +1,3 @@
-@use 'sass:map';
-@import '/src/theme/colors.scss';
-@import '/src/theme/mixins.scss';
-@import './theme/fonts.scss';
-
 // Обнуление стилей
 * {
   padding: 0;
@@ -89,7 +84,7 @@ h4,
 h5,
 h6 {
   font-size: inherit;
-  font-weight: •400;
+  font-weight: 400;
 }
 
 li {
@@ -102,57 +97,4 @@ ul {
   /* Отступ слева в браузере IE и Opera */
   padding-left: 0;
   /* Отступ слева в браузере Firefox, Safari, Chrome */
-}
-
-// дефолтные настройки
-#root {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-
-  @include P3;
-  color: map.get($gray, 4);
-}
-
-h1 {
-  @include H1;
-}
-h2 {
-  @include H2;
-}
-h3 {
-  @include H3;
-}
-h4 {
-  @include H4;
-}
-h5 {
-  @include H5;
-}
-small {
-  @include P2;
-}
-
-.gap5px {
-  @include autoLayout;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
-}
-
-.gap20px {
-  @include autoLayout;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px 0px;
-}
-
-.container__btn {
-  @include autoLayout;
-  justify-content: space-around;
-  padding-top: 10px;
-  gap: 10px;
-  width: 100%;
 }

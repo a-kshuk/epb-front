@@ -1,8 +1,8 @@
 @use 'sass:map';
-@import '/src/theme/colors.scss';
-@import '/src/theme/constants.scss';
-@import '/src/theme/fonts.scss';
-@import '/src/theme/mixins.scss';
+@import '/src/app/styles/variables/colors.scss';
+@import '/src/app/styles/variables/constants.scss';
+@import '/src/app/styles/variables/fonts.scss';
+@import '/src/app/styles/variables/mixins.scss';
 
 .tab_bar {
   @include autoLayout;
